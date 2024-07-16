@@ -9,7 +9,7 @@ from string import Template
 import src.my_gmail as my_gmail, src.templates as templates
 from src.instructions import instructions
 
-st.set_page_config("MailBlast", "./logo.png")
+st.set_page_config("MailBlast", "./static/logo.png")
 
 # Inject custom CSS to hide the specific warning
 hide_warning_css = """
