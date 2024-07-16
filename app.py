@@ -7,6 +7,7 @@ from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 from string import Template 
 import src.my_gmail as my_gmail, src.templates as templates
+from src.instructions import instructions
 
 st.set_page_config("MailBlast", "./logo.png")
 
@@ -37,7 +38,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
         user_email = user_info.get('email')
         user_name = user_info.get('name')
         st.sidebar.write(f"Logged in as {user_name} ({user_email})")
-    if st.sidebar.button("Logout"):
+    if st.sidebar.button("Logout", type='primary'):
+        st.write(instructions, unsafe_allow_html=True)
         st.session_state.clear()
         if os.path.exists('token.pickle'):
             os.remove('token.pickle')
@@ -75,10 +77,25 @@ else:
             if os.path.exists('token.pickle'):
                 os.remove('token.pickle')
 
+# Function to download sample CSV
+def download_sample_csv():
+    with open('static/sample.csv', 'r') as file:
+        sample_csv = file.read()
+
+    st.sidebar.download_button(
+        label="Download Sample CSV",
+        data=sample_csv,
+        file_name='sample.csv',
+        mime='text/csv'
+    )
+
 # Main app content
-st.title("Mass Email Sender Tool")
+st.title("🚀 Welcome to MailBlast: Ultimate Mass Email Sender Tool! 🚀")
 
 if 'creds' in st.session_state and st.session_state['creds']:
+    st.sidebar.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+    download_sample_csv() 
+
     user_info = my_gmail.get_user_info(st.session_state['creds'])
     if user_info:
         user_email = user_info.get('email')
@@ -158,10 +175,12 @@ if 'creds' in st.session_state and st.session_state['creds']:
                         st.success(f"Email sent to {row['recipient_email']}")
                     except Exception as e:
                         st.error(f"Failed to send email to {row['recipient_email']}. Error: {e}")
-
+            
             st.success('All emails have been sent.')
                         
             # Auto-refresh the app after a short delay
             st.write('<meta http-equiv="refresh" content="3">', unsafe_allow_html=True)
 else:
-    st.write("Please log in to use the Mass Email Sender Tool.")
+    st.write(instructions, unsafe_allow_html=True)
+    st.sidebar.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+    download_sample_csv() 
