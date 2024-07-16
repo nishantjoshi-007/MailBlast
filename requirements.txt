@@ -1,0 +1,10 @@
+streamlit 
+google-auth 
+google-auth-oauthlib 
+google-auth-httplib2 
+google-api-python-client
+pandas
+streamlit_pdf_viewer
+email_validator
+openpyxl
+streamlit-google-auth
