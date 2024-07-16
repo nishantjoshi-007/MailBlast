@@ -28,11 +28,7 @@ Welcome to the 'MailBlast' Github Repository. This project is a Streamlit-based 
    - Ensure you have Python 3.11 or newer.
    - Install the Python package for virtual environment using pip:
      ```bash
-     pip install pipenv
-     ```
-   - Install the required Python packages using pipenv:
-     ```bash
-     pipenv install
+     pip install -r requirements.txt
      ```
 
 4. **Run the Application**
