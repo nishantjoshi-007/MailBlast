@@ -14,7 +14,7 @@ import pickle, base64
 # os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 # Configuration
-REDIRECT_URI = os.getenv('REDIRECT_URIS')
+REDIRECT_URI = os.getenv('redirect_uris')
 SCOPES = ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/gmail.send', 'openid']
 
 def save_credentials(creds):
@@ -72,14 +72,14 @@ def get_flow():
     return Flow.from_client_config(
         {
             "web": {
-                "client_id": os.getenv('CLIENT_ID'),
-                "project_id": os.getenv('PROJECT_ID'),
-                "auth_uri": os.getenv('AUTH_URI'),
-                "token_uri": os.getenv('TOKEN_URI'),
-                "auth_provider_x509_cert_url": os.getenv('AUTH_PROVIDER_X509_CERT_URL'),
-                "client_secret": os.getenv('CLIENT_SECRET'),
-                "redirect_uris": [os.getenv('REDIRECT_URIS')],
-                "javascript_origins": [os.getenv('JAVASCRIPT_ORIGINS')]
+                "client_id": os.getenv('client_id'),
+                "project_id": os.getenv('project_id'),
+                "auth_uri": os.getenv('auth_uri'),
+                "token_uri": os.getenv('token_uri'),
+                "auth_provider_x509_cert_url": os.getenv('auth_provider_x509_cert_url'),
+                "client_secret": os.getenv('client_secret'),
+                "redirect_uris": [os.getenv('redirect_uris')],
+                "javascript_origins": [os.getenv('javascript_origins')]
             }
         },
         scopes=SCOPES,
