@@ -59,8 +59,6 @@ if 'creds' in st.session_state and st.session_state['creds']:
         st.experimental_rerun()
 
 else:
-    if st.sidebar.button("Refresh App"):
-        utils.refresh_app(st, 0)
     if st.sidebar.button("Login with Google", type='primary'):
         flow = my_gmail.get_flow()
         flow.redirect_uri = my_gmail.REDIRECT_URI
@@ -91,6 +89,9 @@ else:
             st.session_state.clear()
             if os.path.exists('token.pickle'):
                 os.remove('token.pickle')
+
+    if st.sidebar.button("Refresh App"):
+        utils.refresh_app(st, 0)
 
 # Main app content
 st.title("🚀 Welcome to MailBlast: Ultimate Mass Email Sender Tool! 🚀")
