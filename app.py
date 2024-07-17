@@ -86,12 +86,13 @@ if 'creds' in st.session_state and st.session_state['creds']:
         if st.session_state['show_modal'] == True:
             if st.sidebar.button("Close Popup"):
                 popup.hide_modal(st)
-        elif st.session_state['show_modal'] == False:
+        else:
+            st.session_state['show_modal'] = False
+        
+        if st.session_state['show_modal'] == False:
             if st.sidebar.button("Show Popup"):
                 popup.show_modal(st)
                 popup.render_modal(st, instructions)
-        else:
-            st.session_state['show_modal'] = False
             
                             
         utils.download_sample_csv(st) 
