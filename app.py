@@ -184,7 +184,6 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     my_gmail.send_message(service, 'me', message)
 
                 #success message
-                st.write("Email Sent.")
                 utils.success_box(st)
 
 else:
