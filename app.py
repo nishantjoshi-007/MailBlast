@@ -185,6 +185,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
 
                     #success message
                     st.success('All emails have been sent.')
+                    st.write("Email Sent.")
                     st.info('Now you can replace the files and send more emails or logout to exit the app.')
 
 else:
