@@ -19,7 +19,7 @@ utils.hide_warning(st)
 if 'state' not in st.session_state:
     st.session_state['state'] = None
 if 'show_modal' not in st.session_state:
-    st.session_state['show_modal'] = None
+    st.session_state['show_modal'] = False
 if 'creds' not in st.session_state:
     st.session_state['creds'] = my_gmail.load_credentials()
 
