@@ -42,7 +42,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
         
     # Add popup buttons in the sidebar only if the user is logged in
     if st.sidebar.button("Show Instructions"):
-        popup.show_modal(st)
+        st.session_state['show_attachement'] = True
     
     if st.session_state['show_attachement'] == True:
         if st.button("Hide Popup"):
