@@ -6,7 +6,7 @@ PREDEFINED_TEMPLATES = {
         "body": """   
 Hello ${recipient},
 
-I hope this message finds you well. My name is ${user_name}. I am currently an {education_level} student majoring in ${major} with a graduation date in ${graduation_date}. I am excited about the ${title} position at ${company} and believe that my background and skills make me a strong candidate.
+I hope this message finds you well. My name is ${user_name}. I am currently an ${education_level} student majoring in ${major} with a graduation date in ${graduation_date}. I am excited about the ${job_title} position at ${company} and believe that my background and skills make me a strong candidate.
 
 I have completed several projects that demonstrate my proficiency in ${skills}, and I have practical experience in ${related_experiences}. Additionally, I have worked on projects related to ${additional_relevant_projects}.
 
@@ -19,11 +19,11 @@ ${user_name}
         """
     },
     "Job Application": {
-        "subject": "Application for ${title} Position at ${company}",
+        "subject": "Application for ${job_title} Position at ${company}",
         "body": """   
 Hello ${recipient},
 
-I hope this email finds you well. My name is ${user_name}, and I am writing to express my interest in the ${title} position at ${company}. With my background in ${major}, I am confident in my ability to contribute effectively to your team.
+I hope this email finds you well. My name is ${user_name}, and I am writing to express my interest in the ${job_title} position at ${company}. With my background in ${major}, I am confident in my ability to contribute effectively to your team.
 
 I have a strong foundation in ${skills}, and I have worked on several projects that demonstrate my abilities. I have attached my resume for your review. I would greatly appreciate the opportunity to discuss how my background, skills, and certifications will be beneficial to your team.
 

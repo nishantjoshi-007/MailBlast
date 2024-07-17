@@ -115,12 +115,12 @@ if 'creds' in st.session_state and st.session_state['creds']:
             pdf_viewer(input=resume_data, width=1920)
 
         # Allow users to select a predefined template or write their own
-        template_option = st.selectbox("Select an Email Template", ["Custom"] + list(templates.PREDEFINED_TEMPLATES.keys()))
+        template_option = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"])
 
         if template_option and template_option != "Custom":
             subject_template = templates.PREDEFINED_TEMPLATES[template_option]["subject"]
             body_template = templates.PREDEFINED_TEMPLATES[template_option]["body"]
-            st.text_area("Email Subject Template", value=subject_template, disabled=True)
+            st.text_input("Email Subject Template", value=subject_template, disabled=True)
             st.text_area("Email Body Template", value=body_template, disabled=True)
         else:
             subject_template = st.text_input("Custom Email Subject", placeholder="Email Subject Goes Here:")
