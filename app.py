@@ -89,7 +89,9 @@ if 'creds' in st.session_state and st.session_state['creds']:
         else:
             if st.sidebar.button("Show Modal"):
                popup.show_modal(st)
-                            
+    
+        popup.render_modal(st, instructions)
+          
         utils.download_sample_csv(st) 
     
     # Handle file upload
