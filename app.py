@@ -7,7 +7,7 @@ from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 from string import Template 
 import src.my_gmail as my_gmail, src.templates as templates
-from src.instructions import instructions
+from src.instructions import instructions, home_page_instructions
 from src import utils
 from src import popup
 
@@ -32,7 +32,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
         user_name = user_info.get('name')
         st.sidebar.write(f"Logged in as {user_name} ({user_email})")
     if st.sidebar.button("Logout", type='primary'):
-        st.write(instructions, unsafe_allow_html=True)
+        st.write(home_page_instructions, unsafe_allow_html=True)
         st.session_state.clear()
         if os.path.exists('token.pickle'):
             os.remove('token.pickle')
@@ -172,7 +172,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
             # Auto-refresh the app after a short delay
             utils.refresh_app(st, 3)
 else:
-    st.write(instructions, unsafe_allow_html=True)
+    st.write(home_page_instructions, unsafe_allow_html=True)
     utils.download_sample_csv(st) 
 
 popup.render_modal(st, instructions)
