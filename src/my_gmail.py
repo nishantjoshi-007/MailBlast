@@ -59,6 +59,7 @@ def create_message(sender, to, subject, message_text, attachment_data=None, atta
 def send_message(service, user_id, message):
     try:
         sent_message = service.users().messages().send(userId=user_id, body=message).execute()
+        st.success("All emails have been sent.")
         return sent_message
     except HttpError as error:
         st.error(f'An error occurred: {error}')

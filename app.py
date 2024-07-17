@@ -1,6 +1,4 @@
 import os
-import time
-from datetime import datetime, timedelta
 import streamlit as st
 import pandas as pd
 from streamlit_pdf_viewer import pdf_viewer
@@ -12,7 +10,6 @@ import src.my_gmail as my_gmail, src.templates as templates
 from src.instructions import instructions, home_page_instructions
 from src import utils
 from src import popup
-from google.oauth2.credentials import Credentials
 
 st.set_page_config("MailBlast", "./static/logo.png")
 
@@ -25,22 +22,6 @@ if 'email_sent' not in st.session_state:
     st.session_state['email_sent'] = False
 if 'creds' not in st.session_state:
     st.session_state['creds'] = my_gmail.load_credentials()
-if 'last_activity' not in st.session_state:
-    st.session_state['last_activity'] = datetime.now().isoformat()
-
-# Define session timeout in seconds (e.g., 30 minutes)
-SESSION_TIMEOUT = 30 * 60
-
-# Check if there is a saved credential in cookies
-saved_creds = utils.get_cookie(st, "creds")
-if saved_creds and 'creds' not in st.session_state:
-    st.session_state['creds'] = Credentials.from_authorized_user_info(eval(saved_creds))
-
-# Check for session timeout
-utils.check_session_timeout(st, SESSION_TIMEOUT)
-
-# Update last activity timestamp
-st.session_state['last_activity'] = datetime.now().isoformat()
 
 # Sidebar for login/logout
 if 'creds' in st.session_state and st.session_state['creds']:
@@ -53,7 +34,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
     if st.sidebar.button("Logout", type='primary'):
         st.write(home_page_instructions, unsafe_allow_html=True)
         st.session_state.clear()
-        utils.delete_cookie(st, "creds")
+        if os.path.exists('token.pickle'):
+            os.remove('token.pickle')
         st.experimental_rerun()
 
     popup_col1, popup_col2 = st.columns(2)
@@ -92,15 +74,13 @@ else:
             flow.fetch_token(authorization_response=authorization_response)
             creds = flow.credentials
             my_gmail.save_credentials(creds)
-            # Save credentials in cookies
-            expires_at = datetime.now() + timedelta(seconds=SESSION_TIMEOUT)
-            utils.set_cookie(st, "creds", creds.to_json(), expires_at)
             st.experimental_set_query_params()  # Clear query parameters
             st.experimental_rerun()
         except Exception as e:
             st.error(f"An error occurred during authentication: {e}")
             st.session_state.clear()
-            utils.delete_cookie(st, "creds")
+            if os.path.exists('token.pickle'):
+                os.remove('token.pickle')
 
 # Main app content
 st.title("🚀 Welcome to MailBlast: Ultimate Mass Email Sender Tool! 🚀")
@@ -176,7 +156,6 @@ if 'creds' in st.session_state and st.session_state['creds']:
             st.session_state['email_sent'] = True
             with st.spinner('Sending emails...'):
                 service = build('gmail', 'v1', credentials=st.session_state['creds'])
-                email_sent_successfully = True
                 for index, row in df.iterrows():
                     try:
                         row_dict = row.to_dict()
@@ -190,7 +169,6 @@ if 'creds' in st.session_state and st.session_state['creds']:
                             validate_email(row['recipient_email'])
                         except EmailNotValidError as e:
                             st.error(f"Invalid email address: {row['recipient_email']} - {e}")
-                            email_sent_successfully = False
                             continue
 
                         # Create message
@@ -201,16 +179,13 @@ if 'creds' in st.session_state and st.session_state['creds']:
                         # Send message
                         my_gmail.send_message(service, 'me', message)
                         
-                        st.success(f"Email sent to {row['recipient_email']}")
                     except Exception as e:
                         st.error(f"Failed to send email to {row['recipient_email']}. Error: {e}")
-                        email_sent_successfully = False                    
                 
-                if email_sent_successfully:
-                    st.success('All emails have been sent.')
+            st.success('All emails have been sent.')
 
-                # Auto-refresh the app after a short delay without logging out
-                utils.refresh_app(st, 5)
+            st.info('Now you can replace the files and send more emails or logout to exit the app.')
+
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
-    utils.download_sample_csv(st)
+    utils.download_sample_csv(st) 
