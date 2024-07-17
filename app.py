@@ -55,8 +55,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
 
     popup_col1, popup_col2 = st.columns(2)
     with popup_col1:
-        popup.render_modal(st, instructions)
         if st.sidebar.button("Show Instructions"):
+            popup.render_modal(st, instructions)
             popup.show_modal(st)
             
             with popup_col2:       
