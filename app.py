@@ -79,10 +79,14 @@ if 'creds' in st.session_state and st.session_state['creds']:
         user_email = user_info.get('email')
         user_name = user_info.get('name')
         st.write(f"Welcome to MailBlast, {user_name} ({user_email})")
-    
-        if st.sidebar.button("Open Popup"):
-            popup.show_modal(st)
-        
+            
+        if st.session_state['show_modal'] ==  False:
+            if st.sidebar.button("Open Popup"):
+                popup.show_modal(st)
+        else:
+            if st.sidebar.button("Close Popup"):
+                popup.hide_modal(st)
+            
         popup.render_modal(st, instructions)
         
         utils.download_sample_csv(st) 

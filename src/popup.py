@@ -40,7 +40,3 @@ def render_modal(st, content):
             """,
             unsafe_allow_html=True
         )
-        
-        # Add a Streamlit button to close the modal inside the modal content
-        if st.button("Close Popup"):
-            hide_modal(st)
