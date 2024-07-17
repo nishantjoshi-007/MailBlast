@@ -12,6 +12,7 @@ import src.my_gmail as my_gmail, src.templates as templates
 from src.instructions import instructions, home_page_instructions
 from src import utils
 from src import popup
+from google.oauth2.credentials import Credentials
 
 st.set_page_config("MailBlast", "./static/logo.png")
 
@@ -33,7 +34,7 @@ SESSION_TIMEOUT = 30 * 60
 # Check if there is a saved credential in cookies
 saved_creds = utils.get_cookie(st, "creds")
 if saved_creds and 'creds' not in st.session_state:
-    st.session_state['creds'] = saved_creds
+    st.session_state['creds'] = Credentials.from_authorized_user_info(eval(saved_creds))
 
 # Check for session timeout
 utils.check_session_timeout(st, SESSION_TIMEOUT)
@@ -209,7 +210,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     st.success('All emails have been sent.')
 
                 # Auto-refresh the app after a short delay without logging out
-                #utils.refresh_app(st, 3)
+                utils.refresh_app(st, 5)
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
     utils.download_sample_csv(st)
