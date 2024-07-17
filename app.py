@@ -8,21 +8,11 @@ from googleapiclient.discovery import build
 from string import Template 
 import src.my_gmail as my_gmail, src.templates as templates
 from src.instructions import instructions
+from src import utils
 
 st.set_page_config("MailBlast", "./static/logo.png")
 
-# Inject custom CSS to hide the specific warning
-hide_warning_css = """
-    <style>
-    .stAlert[data-testid="stAlert"] {
-        display: none;
-    }
-    </style>
-"""
-st.markdown(hide_warning_css, unsafe_allow_html=True)
-
-def refresh_app():
-    st.write('<meta http-equiv="refresh" content="0">', unsafe_allow_html=True)
+utils.hide_warning(st)
 
 # Initialize session state variables
 if 'state' not in st.session_state:
@@ -45,7 +35,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
             os.remove('token.pickle')
         st.experimental_rerun()
 else:
-    st.sidebar.button("Refresh App", on_click=refresh_app)
+    st.sidebar.button("Refresh App", on_click=utils.refresh_app(st, 0))
     if st.sidebar.button("Login with Google", type='primary'):
         flow = my_gmail.get_flow()
         flow.redirect_uri = my_gmail.REDIRECT_URI
@@ -77,24 +67,12 @@ else:
             if os.path.exists('token.pickle'):
                 os.remove('token.pickle')
 
-# Function to download sample CSV
-def download_sample_csv():
-    with open('static/sample.csv', 'r') as file:
-        sample_csv = file.read()
-
-    st.sidebar.download_button(
-        label="Download Sample CSV",
-        data=sample_csv,
-        file_name='sample.csv',
-        mime='text/csv'
-    )
-
 # Main app content
 st.title("🚀 Welcome to MailBlast: Ultimate Mass Email Sender Tool! 🚀")
 
 if 'creds' in st.session_state and st.session_state['creds']:
     st.sidebar.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
-    download_sample_csv() 
+    utils.download_sample_csv(st) 
 
     user_info = my_gmail.get_user_info(st.session_state['creds'])
     if user_info:
@@ -132,8 +110,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
             st.text_area("Email Subject Template", value=subject_template, disabled=True)
             st.text_area("Email Body Template", value=body_template, disabled=True)
         else:
-            subject_template = st.text_area("Email Subject Template", value="Your custom subject here")
-            body_template = st.text_area("Email Body Template", value="Your custom body here")
+            subject_template = st.text_input("Custom Email Subject", placeholder="Email Subject Goes Here:")
+            body_template = st.text_area("Custom Email Body", placeholder="Email Body Goes Here:")
 
         # Preview email
         if st.button('Preview Email'):
@@ -179,8 +157,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
             st.success('All emails have been sent.')
                         
             # Auto-refresh the app after a short delay
-            st.write('<meta http-equiv="refresh" content="3">', unsafe_allow_html=True)
+            utils.refresh_app(st, 3)
 else:
     st.write(instructions, unsafe_allow_html=True)
     st.sidebar.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
-    download_sample_csv() 
+    utils.download_sample_csv(st) 

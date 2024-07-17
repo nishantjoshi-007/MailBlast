@@ -1,14 +1,14 @@
 # predefined templates
 
 PREDEFINED_TEMPLATES = {
-    "Template 1": {
-        "subject": "Referral Request for ${title} Position",
+    "Referral Request": {
+        "subject": "Referral Request for ${job_title} Position at ${company}",
         "body": """   
 Hello ${recipient},
 
-I hope this message finds you well. My name is ${user_name}. As an undergraduate Computer Science student with a graduation date in December 2024, I am excited about the ${title} position at ${company}. 
+I hope this message finds you well. My name is ${user_name}. I am currently an {education_level} student majoring in ${major} with a graduation date in ${graduation_date}. I am excited about the ${title} position at ${company} and believe that my background and skills make me a strong candidate.
 
-I have completed several projects that demonstrate my proficiency in programming languages such as Python, Java, and C++, as well as experience with web development using technologies like HTML, CSS, and JavaScript. Additionally, I have worked on projects related to data structures, algorithms, and software engineering practices.
+I have completed several projects that demonstrate my proficiency in ${skills}, and I have practical experience in ${related_experiences}. Additionally, I have worked on projects related to ${additional_relevant_projects}.
 
 I understand that ${company} values referrals, and I would greatly appreciate it if you could refer me for this role. I have attached my resume for your review. If you need any additional information or would like to discuss further, please let me know.
 
@@ -18,33 +18,49 @@ Best regards,
 ${user_name}
         """
     },
-    "Template 2": {
-        "subject": "Introducing Myself for the ${title} Role at ${company}",
+    "Job Application": {
+        "subject": "Application for ${title} Position at ${company}",
         "body": """   
-Dear ${recipient},
+Hello ${recipient},
 
-I hope you are doing well. My name is ${user_name}, and I am reaching out to express my interest in the ${title} position at ${company}. I am a Computer Science student set to graduate in December 2024, and I have a strong background in software development and data analysis.
+I hope this email finds you well. My name is ${user_name}, and I am writing to express my interest in the ${title} position at ${company}. With my background in ${major}, I am confident in my ability to contribute effectively to your team.
 
-I have worked on various projects, including web development with HTML, CSS, and JavaScript, and I am proficient in programming languages like Python, Java, and C++. I believe my skills and experience make me a strong candidate for this role.
+I have a strong foundation in ${skills}, and I have worked on several projects that demonstrate my abilities. I have attached my resume for your review. I would greatly appreciate the opportunity to discuss how my background, skills, and certifications will be beneficial to your team.
 
-I have attached my resume for your consideration. Please let me know if you need any additional information or if you would like to schedule a time to discuss further.
+Thank you for considering my application. I look forward to hearing from you.
 
 Best regards,
 ${user_name}
         """
     },
-    "Template 3": {
-        "subject": "Exploring Opportunities at ${company} for the ${title} Position",
+    "Product Launch": {
+        "subject": "Discover Our Latest ${product} - Special Offer Just for You!",
         "body": """   
-Hi ${recipient},
+Hello ${recipient},
 
-My name is ${user_name}, and I am writing to express my interest in the ${title} position at ${company}. As a Computer Science student graduating in December 2024, I have gained extensive experience in software development and web technologies.
+I hope you're doing well! My name is ${user_name}, and I'm excited to introduce you to our latest product, the ${product}. At ${company}, we believe in providing top-quality products that cater to your needs.
 
-I have successfully completed projects in Python, Java, and C++, and have hands-on experience with web development frameworks and tools. I am confident that my skills and background align well with the requirements of the ${title} role at ${company}.
+The ${product} offers ${features}, making it the perfect choice for ${use_case}. As a valued customer, we're offering you an exclusive discount. Use the code ${discount_code} at checkout to enjoy a special price.
 
-Please find my resume attached for your review. I am eager to discuss how I can contribute to your team. Thank you for considering my application.
+If you have any questions or need more information, feel free to reach out. We're here to help!
 
-Sincerely,
+Best regards,
+${user_name}
+${company}
+        """
+    },
+    "Event Invite": {
+        "subject": "You're Invited! Join Us for ${event} on ${date}",
+        "body": """   
+Hello ${recipient},
+
+I hope you're having a great day! My name is ${user_name}, and I'm excited to invite you to our upcoming ${event} on ${date}. It's going to be a fantastic event filled with ${highlights}.
+
+Your presence would mean a lot to us. Please let us know if you can make it by responding to this email. Feel free to bring along any friends or colleagues who might be interested.
+
+Looking forward to seeing you there!
+
+Best,
 ${user_name}
         """
     },
