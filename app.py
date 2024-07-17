@@ -22,6 +22,8 @@ if 'email_sent' not in st.session_state:
     st.session_state['email_sent'] = False
 if 'creds' not in st.session_state:
     st.session_state['creds'] = my_gmail.load_credentials()
+if 'show_modal' not in st.session_state:
+    st.session_state['show_modal'] = False
 
 # Sidebar for login/logout
 if 'creds' in st.session_state and st.session_state['creds']:                    
@@ -39,13 +41,15 @@ if 'creds' in st.session_state and st.session_state['creds']:
     #instructions popup
     popup_col1, popup_col2 = st.columns(2)
     with popup_col1:
-        if st.sidebar.button("Show Instructions"):
-            popup.show_modal(st)
-            popup.render_modal(st, instructions)
+        if st.session_state['show_modal'] == False:
+            if st.sidebar.button("Show Instructions"):
+                popup.show_modal(st)
+                popup.render_modal(st, instructions)
             
-            with popup_col2:       
-                if st.sidebar.button("Hide Instructions"):
-                    popup.hide_modal(st)
+            with popup_col2:
+                if st.session_state['show_modal'] == True:     
+                    if st.sidebar.button("Hide Instructions"):
+                        popup.hide_modal(st)
     
     #sample csv download
     utils.download_sample_csv(st) 
