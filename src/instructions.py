@@ -94,7 +94,7 @@ home_page_instructions = '''
 - **Personalize your emails** as much as possible for better engagement.
 - **Keep an eye on the progress bar** to ensure all emails are sent.
 
-## 📧 Why Use MailBlast?
+### 📧 Why Use MailBlast?
 
 - **Effortless Mass Emailing**: Send multiple personalized emails with just a few clicks.
 - **Seamless Google Integration**: Securely log in and send emails using your Google account.
