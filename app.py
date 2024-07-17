@@ -43,15 +43,24 @@ if 'creds' in st.session_state and st.session_state['creds']:
         st.experimental_rerun()
         
     # Add popup buttons in the sidebar only if the user is logged in    
-    if st.sidebar.button("Show Instructions"):
-        popup.show_modal(st)
-        st.session_state['hide_button'] = True
+    # if st.sidebar.button("Show Instructions"):
+    #     popup.show_modal(st)
+    #     st.session_state['hide_button'] = True
     
-    if st.session_state['show_modal'] == True:
-        if st.session_state['hide_button'] == True:
-            if st.sidebar.button("Hide Popup"):
-                popup.hide_modal(st)
-                st.session_state['hide_button'] = False
+    # if st.session_state['show_modal'] == True:
+    #     if st.session_state['hide_button'] == True:
+    #         if st.sidebar.button("Hide Popup"):
+    #             popup.hide_modal(st)
+    #             st.session_state['hide_button'] = False
+
+    popup_col1, popup_col2 = st.columns(2)
+    with popup_col1:
+        if st.sidebar.button("Show Instructions"):
+            popup.show_modal(st)
+            
+            with popup_col2:       
+                if st.sidebar.button("Hide Instructions"):
+                    st.session_state['show_modal'] = False
 
 else:
     if st.sidebar.button("Refresh App"):
