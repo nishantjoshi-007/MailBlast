@@ -93,7 +93,7 @@ def download_sample_csv():
 st.title("🚀 Welcome to MailBlast: Ultimate Mass Email Sender Tool! 🚀")
 
 if 'creds' in st.session_state and st.session_state['creds']:
-    st.sidebar.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+    st.sidebar.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
     download_sample_csv() 
 
     user_info = my_gmail.get_user_info(st.session_state['creds'])
@@ -182,5 +182,5 @@ if 'creds' in st.session_state and st.session_state['creds']:
             st.write('<meta http-equiv="refresh" content="3">', unsafe_allow_html=True)
 else:
     st.write(instructions, unsafe_allow_html=True)
-    st.sidebar.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+    st.sidebar.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
     download_sample_csv() 
