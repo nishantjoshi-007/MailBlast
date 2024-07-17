@@ -16,7 +16,7 @@ def hide_warning(st):
 def refresh_app(st, delay):
     time.sleep(delay)
     # st.write(f'<meta http-equiv="refresh" content="{time}">', unsafe_allow_html=True)
-    keys_to_clear = ['file_uploaded', 'show_modal', 'resume_data', 'resume_name']
+    keys_to_clear = ['file_uploaded', 'resume_data', 'resume_name', 'email_sent']
     for key in keys_to_clear:
         if key in st.session_state:
             del st.session_state[key]
