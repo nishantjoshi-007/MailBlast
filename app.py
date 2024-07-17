@@ -122,9 +122,10 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     
                     if st.session_state['show_attachment'] == True:
                         pdf_viewer(input=st.session_state['attachment_data'], width=1920)
-            with col2:       
-                if st.button("Hide Attachment"):
-                    st.session_state['show_attachment'] = False
+                    
+                    with col2:       
+                        if st.button("Hide Attachment"):
+                            st.session_state['show_attachment'] = False
 
         # Allow users to select a predefined template or write their own
         template_option = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"])
