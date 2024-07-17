@@ -40,9 +40,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
             os.remove('token.pickle')
         st.experimental_rerun()
         
-    # Add popup buttons in the sidebar only if the user is logged in
-    popup.render_modal(st, instructions)
-    
+    # Add popup buttons in the sidebar only if the user is logged in    
     if st.sidebar.button("Show Instructions"):
         popup.show_modal(st)
     
@@ -191,3 +189,5 @@ if 'creds' in st.session_state and st.session_state['creds']:
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
     utils.download_sample_csv(st) 
+    
+popup.render_modal(st, instructions)
