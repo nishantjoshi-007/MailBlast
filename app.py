@@ -41,12 +41,11 @@ if 'creds' in st.session_state and st.session_state['creds']:
         st.experimental_rerun()
         
     # Add popup buttons in the sidebar only if the user is logged in
-    toggle_button_label = "Close Popup" if st.session_state['show_modal'] else "Show Instructions"
-    if st.sidebar.button(toggle_button_label):
-        if st.session_state['show_modal']:
+    if st.sidebar.button("Show Instructions"):
+        popup.show_modal(st)
+        
+        if st.button("Hide Popup"):
             popup.hide_modal(st)
-        else:
-            popup.show_modal(st)
 
 else:
     if st.sidebar.button("Refresh App"):
@@ -113,8 +112,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
         # attachement
         attachment = st.file_uploader("Upload the Attachment (optional)", type=("pdf"))
         if attachment:
-            col1, col2 = st.columns(2)
-            with col1:
+            attach_col1, attach_col2 = st.columns(2)
+            with attach_col1:
                 if st.button("Show Attachment"):
                     st.session_state['show_attachment'] = True
                     st.session_state['attachment_data'] = attachment.getvalue()
@@ -123,7 +122,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     if st.session_state['show_attachment'] == True:
                         pdf_viewer(input=st.session_state['attachment_data'], width=1920, height=1080)
                     
-                    with col2:       
+                    with attach_col2:       
                         if st.button("Hide Attachment"):
                             st.session_state['show_attachment'] = False
 
