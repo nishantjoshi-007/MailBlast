@@ -148,8 +148,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
                 body = Template(body_template).substitute(preview_row)
                 
                 st.subheader('Email Preview')
-                st.write(f'Subject: {subject}', unsafe_allow_html=True)
-                st.write(f'Body:\n{body}', unsafe_allow_html=True)
+                st.html(f'Subject: {subject}')
+                st.html(f'Body:\n{body}')
 
         # Send emails
         if st.button('Send Emails'):
