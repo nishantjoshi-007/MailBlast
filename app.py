@@ -111,19 +111,20 @@ if 'creds' in st.session_state and st.session_state['creds']:
         st.dataframe(df)
 
         # attachement
-        attachement = st.file_uploader("Upload the Attachment (optional)", type=("pdf"))
-        if attachement:
-            st.session_state['attachement_data'] = attachement.getvalue()
-            st.session_state['attachement_name'] = attachement.name
-            st.session_state['show_attachement'] = True
+        attachment = st.file_uploader("Upload the Attachment (optional)", type=("pdf"))
+        if attachment:
+            st.session_state['attachment_data'] = attachment.getvalue()
+            st.session_state['attachment_name'] = attachment.name
+            st.session_state['show_attachment'] = True
 
-        if 'attachement_data' in st.session_state and st.session_state['attachement_data']:
-            toggle_attachement_label = "Hide Attachment" if st.session_state['show_attachement'] else "Show Attachment"
-            if st.button(toggle_attachement_label):
-                st.session_state['show_attachement'] = not st.session_state['show_attachement']
+        if 'attachment_data' in st.session_state and st.session_state['attachment_data']:
+            toggle_attachment_label = "Hide Attachment" if st.session_state['show_attachment'] else "Show Attachment"
+            if st.button(toggle_attachment_label):
+                st.session_state['show_attachment'] = not st.session_state['show_attachment']
+                st.experimental_rerun()
             
-            if st.session_state['show_attachement']:
-                pdf_viewer(input=st.session_state['attachement_data'], width=1920)
+            if st.session_state['show_attachment']:
+                pdf_viewer(input=st.session_state['attachment_data'], width=1920)
 
         # Allow users to select a predefined template or write their own
         template_option = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"])
@@ -169,9 +170,9 @@ if 'creds' in st.session_state and st.session_state['creds']:
                             continue
 
                         # Create message
-                        attachement_data = st.session_state.get('attachement_data', None)
-                        attachement_name = st.session_state.get('attachement_name', None)
-                        message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachement_data, attachement.name if attachement else None)
+                        attachment_data = st.session_state.get('attachement_data', None)
+                        attachment_name = st.session_state.get('attachement_name', None)
+                        message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment.name if attachment else None)
 
                         # Send message
                         my_gmail.send_message(service, 'me', message)
