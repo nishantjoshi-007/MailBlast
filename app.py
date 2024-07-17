@@ -37,6 +37,12 @@ if 'creds' in st.session_state and st.session_state['creds']:
         if os.path.exists('token.pickle'):
             os.remove('token.pickle')
         st.experimental_rerun()
+        
+    # Add popup buttons in the sidebar only if the user is logged in
+    toggle_button_label = "Close Modal" if st.session_state['show_modal'] else "Show Modal"
+    if st.sidebar.button(toggle_button_label):
+        st.session_state['show_modal'] = not st.session_state['show_modal']
+
 else:
     if st.sidebar.button("Refresh App"):
         utils.refresh_app(st, 0)
@@ -81,17 +87,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
         user_email = user_info.get('email')
         user_name = user_info.get('name')
         st.write(f"Welcome to MailBlast, {user_name} ({user_email})")
-        
-        #popup for instructions when logged in                   
-        if st.session_state['show_modal']:
-            if st.sidebar.button("Close Modal"):
-                popup.hide_modal(st)
-        else:
-            if st.sidebar.button("Show Modal"):
-               popup.show_modal(st)
     
-        popup.render_modal(st, instructions)
-          
         utils.download_sample_csv(st) 
     
     # Handle file upload
@@ -175,3 +171,5 @@ if 'creds' in st.session_state and st.session_state['creds']:
 else:
     st.write(instructions, unsafe_allow_html=True)
     utils.download_sample_csv(st) 
+
+popup.render_modal(st, instructions)
