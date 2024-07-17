@@ -167,7 +167,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     except Exception as e:
                         st.error(f"Failed to send email to {row['recipient_email']}. Error: {e}")
             
-            st.success('All emails have been sent.')
+                st.success('All emails have been sent.')
                         
             # Auto-refresh the app after a short delay
             #utils.refresh_app(st, 3)
