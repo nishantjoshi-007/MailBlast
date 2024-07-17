@@ -45,7 +45,7 @@ def create_message(sender, to, subject, message_text, resume_data=None, resume_n
     message['to'] = to
     message['from'] = sender
     message['subject'] = subject
-    msg = MIMEText(message_text, 'plain')
+    msg = MIMEText(message_text, 'html')
     message.attach(msg)
     if resume_data and resume_name:
         part = MIMEBase('application', 'octet-stream')
