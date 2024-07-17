@@ -170,7 +170,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
             st.success('All emails have been sent.')
                         
             # Auto-refresh the app after a short delay
-            utils.refresh_app(st, 3)
+            st.rerun()
+                #utils.refresh_app(st, 3)
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
     utils.download_sample_csv(st) 
