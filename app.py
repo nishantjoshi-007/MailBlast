@@ -133,7 +133,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
         if template_option and template_option != "Custom":
             subject_template = templates.PREDEFINED_TEMPLATES[template_option]["subject"]
             body_template = templates.PREDEFINED_TEMPLATES[template_option]["body"]
-            st.text_input("Email Subject Template", value=subject_template, disabled=True)
+            st.write.text_input("Email Subject Template", value=subject_template, disabled=True)
             st.text_area("Email Body Template", value=body_template, disabled=True)
         else:
             subject_template = st.text_input("Custom Email Subject", placeholder="Email Subject Goes Here:")
@@ -148,8 +148,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
                 body = Template(body_template).substitute(preview_row)
                 
                 st.subheader('Email Preview')
-                st.text(f'Subject: {subject}')
-                st.text(f'Body:\n{body}')
+                st.write(f'Subject: {subject}', unsafe_allow_html=True)
+                st.write(f'Body:\n{body}', unsafe_allow_html=True)
 
         # Send emails
         if st.button('Send Emails'):
