@@ -69,10 +69,10 @@
 
 PREDEFINED_TEMPLATES = {
     "Referral Request": {
-        "subject": "Referral Request for ${title} Position at ${company}",
+        "subject": "Referral Request for ${job_title} Position at ${company}",
         "body": """   
         <p>Hello ${recipient},</p>
-        <p>I hope this message finds you well. My name is ${user_name}. I am currently an ${education_level} student majoring in ${major} with a graduation date in ${graduation_date}. I am excited about the ${title} position at ${company} and believe that my background and skills make me a strong candidate.</p>
+        <p>I hope this message finds you well. My name is ${user_name}. I am currently an ${education_level} student majoring in ${major} with a graduation date in ${graduation_date}. I am excited about the ${job_title} position at ${company} and believe that my background and skills make me a strong candidate.</p>
         <p>I have completed several projects that demonstrate my proficiency in ${skills}, and I have practical experience in ${related_experiences}. Additionally, I have worked on projects related to ${additional_relevant_projects}.</p>
         <p>I understand that ${company} values referrals, and I would greatly appreciate it if you could refer me for this role. I have attached my resume for your review. If you need any additional information or would like to discuss further, please let me know.</p>
         <p>Thank you for your assistance!</p>
@@ -80,10 +80,10 @@ PREDEFINED_TEMPLATES = {
         """
     },
     "Job Application": {
-        "subject": "Application for ${title} Position at ${company}",
+        "subject": "Application for ${job_title} Position at ${company}",
         "body": """   
         <p>Hello ${recipient},</p>
-        <p>I hope this email finds you well. My name is ${user_name}, and I am writing to express my interest in the ${title} position at ${company}. With my background in ${major}, I am confident in my ability to contribute effectively to your team.</p>
+        <p>I hope this email finds you well. My name is ${user_name}, and I am writing to express my interest in the ${job_title} position at ${company}. With my background in ${major}, I am confident in my ability to contribute effectively to your team.</p>
         <p>I have a strong foundation in ${skills}, and I have worked on several projects that demonstrate my abilities. I have attached my resume for your review. I would greatly appreciate the opportunity to discuss how my background, skills, and certifications will be beneficial to your team.</p>
         <p>Thank you for considering my application. I look forward to hearing from you.</p>
         <p>Best regards,<br>${user_name}</p>
