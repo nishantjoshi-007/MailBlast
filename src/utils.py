@@ -1,4 +1,7 @@
-import time, os
+import base64
+import hashlib
+import os
+from datetime import datetime, timedelta
 
 # Function to hide the warning
 def hide_warning(st):
@@ -14,13 +17,7 @@ def hide_warning(st):
 
 # Function to refresh the app
 def refresh_app(st, delay):
-    time.sleep(delay)
-    # st.write(f'<meta http-equiv="refresh" content="{time}">', unsafe_allow_html=True)
-    keys_to_clear = ['file_uploaded', 'resume_data', 'resume_name', 'email_sent']
-    for key in keys_to_clear:
-        if key in st.session_state:
-            del st.session_state[key]
-    st.rerun()
+    st.write(f'<meta http-equiv="refresh" content="{delay}">', unsafe_allow_html=True)
 
 # Function to download sample CSV
 def download_sample_csv(st):
@@ -50,10 +47,31 @@ def download_sample_csv(st):
             mime='text/csv'
         )
         
+# Function to set a cookie
+def set_cookie(st, key, value, expires_at):
+    cookie_value = f"{value}|{expires_at.isoformat()}"
+    encoded_value = base64.b64encode(cookie_value.encode()).decode()
+    st.experimental_set_query_params(**{key: encoded_value})
+
+# Function to get a cookie
+def get_cookie(st, key):
+    params = st.experimental_get_query_params()
+    if key in params:
+        encoded_value = params[key][0]
+        decoded_value = base64.b64decode(encoded_value).decode()
+        value, expires_at = decoded_value.split('|')
+        expires_at = datetime.fromisoformat(expires_at)
+        if expires_at > datetime.now():
+            return value
+    return None
+
+# Function to delete a cookie
+def delete_cookie(st, key):
+    st.experimental_set_query_params(**{key: ""})
+    
 # Function to check session timeout
 def check_session_timeout(st, SESSION_TIMEOUT):
-    if time.time() - st.session_state['last_activity'] > SESSION_TIMEOUT:
+    if datetime.now() - datetime.fromisoformat(st.session_state['last_activity']) > timedelta(seconds=SESSION_TIMEOUT):
         st.session_state.clear()
-        if os.path.exists('token.pickle'):
-            os.remove('token.pickle')
+        delete_cookie(st, "creds")
         st.experimental_rerun()
