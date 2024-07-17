@@ -171,7 +171,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
                         
             # Auto-refresh the app after a short delay
             #utils.refresh_app(st, 3)
-            st.rerun()
+        st.rerun()
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
     utils.download_sample_csv(st) 
