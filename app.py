@@ -24,20 +24,19 @@ if 'creds' not in st.session_state:
     st.session_state['creds'] = my_gmail.load_credentials()
 
 # Sidebar for login/logout
-if 'creds' in st.session_state and st.session_state['creds']:
+if 'creds' in st.session_state and st.session_state['creds']:                    
     st.session_state['creds'] = my_gmail.refresh_token_if_expired(st.session_state['creds'])
     user_info = my_gmail.get_user_info(st.session_state['creds'])
     if user_info:
         user_email = user_info.get('email')
         user_name = user_info.get('name')
         st.sidebar.write(f"Logged in as {user_name} ({user_email})")
-    if st.sidebar.button("Logout", type='primary'):
-        st.write(home_page_instructions, unsafe_allow_html=True)
-        st.session_state.clear()
-        if os.path.exists('token.pickle'):
-            os.remove('token.pickle')
-        st.experimental_rerun()
-
+    
+    #refresh app button
+    if st.sidebar.button("Refresh App"):
+        utils.refresh_app(st, 0)
+    
+    #instructions popup
     popup_col1, popup_col2 = st.columns(2)
     with popup_col1:
         if st.sidebar.button("Show Instructions"):
@@ -47,6 +46,17 @@ if 'creds' in st.session_state and st.session_state['creds']:
             with popup_col2:       
                 if st.sidebar.button("Hide Instructions"):
                     popup.hide_modal(st)
+    
+    #sample csv download
+    utils.download_sample_csv(st) 
+
+    #logout button          
+    if st.sidebar.button("Logout", type='primary'):
+        st.write(home_page_instructions, unsafe_allow_html=True)
+        st.session_state.clear()
+        if os.path.exists('token.pickle'):
+            os.remove('token.pickle')
+        st.experimental_rerun()
 
 else:
     if st.sidebar.button("Refresh App"):
@@ -92,9 +102,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
         user_email = user_info.get('email')
         user_name = user_info.get('name')
         st.write(f"Welcome to MailBlast, {user_name} ({user_email})")
-    
-        utils.download_sample_csv(st) 
-    
+        
     # Handle file upload
     uploaded_file = st.file_uploader('Please upload the Excel/csv file.', type=['csv', 'xls', 'xlsx'])
     if uploaded_file is not None:

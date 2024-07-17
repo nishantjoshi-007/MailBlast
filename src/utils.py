@@ -1,8 +1,3 @@
-import base64
-import hashlib
-import os
-from datetime import datetime, timedelta
-
 # Function to hide the warning
 def hide_warning(st):
     # Inject custom CSS to hide the specific warning
@@ -46,32 +41,3 @@ def download_sample_csv(st):
             file_name=f'{radio_select.replace(" ","_").lower()}sample.csv',
             mime='text/csv'
         )
-        
-# Function to set a cookie
-def set_cookie(st, key, value, expires_at):
-    cookie_value = f"{value}|{expires_at.isoformat()}"
-    encoded_value = base64.b64encode(cookie_value.encode()).decode()
-    st.experimental_set_query_params(**{key: encoded_value})
-
-# Function to get a cookie
-def get_cookie(st, key):
-    params = st.experimental_get_query_params()
-    if key in params:
-        encoded_value = params[key][0]
-        decoded_value = base64.b64decode(encoded_value).decode()
-        value, expires_at = decoded_value.split('|')
-        expires_at = datetime.fromisoformat(expires_at)
-        if expires_at > datetime.now():
-            return value
-    return None
-
-# Function to delete a cookie
-def delete_cookie(st, key):
-    st.experimental_set_query_params(**{key: ""})
-    
-# Function to check session timeout
-def check_session_timeout(st, SESSION_TIMEOUT):
-    if datetime.now() - datetime.fromisoformat(st.session_state['last_activity']) > timedelta(seconds=SESSION_TIMEOUT):
-        st.session_state.clear()
-        delete_cookie(st, "creds")
-        st.experimental_rerun()
