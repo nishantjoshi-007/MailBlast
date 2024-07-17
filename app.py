@@ -55,6 +55,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
 
     popup_col1, popup_col2 = st.columns(2)
     with popup_col1:
+        popup.render_modal(st, instructions)
         if st.sidebar.button("Show Instructions"):
             popup.show_modal(st)
             
@@ -208,5 +209,3 @@ if 'creds' in st.session_state and st.session_state['creds']:
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
     utils.download_sample_csv(st) 
-    
-popup.render_modal(st, instructions)
