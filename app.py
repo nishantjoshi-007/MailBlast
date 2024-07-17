@@ -158,6 +158,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
 
         # Send emails
         if st.button('Send Emails'):
+            email_sent_successfully = True
             with st.spinner('Sending emails...'):
                 service = build('gmail', 'v1', credentials=st.session_state['creds'])
                 for index, row in df.iterrows():
@@ -173,12 +174,13 @@ if 'creds' in st.session_state and st.session_state['creds']:
                             validate_email(row['recipient_email'])
                         except EmailNotValidError as e:
                             st.error(f"Invalid email address: {row['recipient_email']} - {e}")
+                            email_sent_successfully = False
                             continue
 
                         # Create message
-                        attachment_data = st.session_state.get('attachement_data', None)
-                        attachment_name = st.session_state.get('attachement_name', None)
-                        message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment.name if attachment else None)
+                        attachment_data = st.session_state.get('attachment_data', None)
+                        attachment_name = st.session_state.get('attachment_name', None)
+                        message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment_name if attachment else None)
 
                         # Send message
                         my_gmail.send_message(service, 'me', message)
@@ -186,10 +188,12 @@ if 'creds' in st.session_state and st.session_state['creds']:
                         st.success(f"Email sent to {row['recipient_email']}")
                     except Exception as e:
                         st.error(f"Failed to send email to {row['recipient_email']}. Error: {e}")
-            
-            st.success('All emails have been sent.')
-                        
-                # Auto-refresh the app after a short delay
+                        email_sent_successfully = False
+                
+                if email_sent_successfully:
+                    st.success('All emails have been sent.')
+
+            # Auto-refresh the app after a short delay
             utils.refresh_app(st, 3)
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)

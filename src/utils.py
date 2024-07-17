@@ -20,7 +20,7 @@ def refresh_app(st, delay):
     for key in keys_to_clear:
         if key in st.session_state:
             del st.session_state[key]
-    st.experimental_rerun()
+    st.rerun()
 
 # Function to download sample CSV
 def download_sample_csv(st):
