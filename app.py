@@ -121,7 +121,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     st.session_state['attachment_name'] = attachment.name
                     
                     if st.session_state['show_attachment'] == True:
-                        pdf_viewer(input=st.session_state['attachment_data'], width=1920)
+                        pdf_viewer(input=st.session_state['attachment_data'], width=1920, height=1080)
                     
                     with col2:       
                         if st.button("Hide Attachment"):
