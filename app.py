@@ -15,20 +15,6 @@ st.set_page_config("MailBlast", "./static/logo.png")
 
 utils.hide_warning(st)
 
-success_css = """
-    <style>
-    .success-box {
-        color: #155724;
-        background-color: #d4edda;
-        border-color: #c3e6cb;
-        padding: 10px 20px;
-        margin: 10px 0;
-        border: 1px solid transparent;
-        border-radius: 4px;
-    }
-    </style>
-"""
-
 # Initialize session state variables
 if 'state' not in st.session_state:
     st.session_state['state'] = None
@@ -199,7 +185,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
 
                 #success message
                 st.write("Email Sent.")
-                st.write('<div class="success-box">Horray, All emails have been sent.</div>', unsafe_allow_html=True)
+                utils.success_box(st)
 
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)

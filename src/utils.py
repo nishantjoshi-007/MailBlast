@@ -41,3 +41,13 @@ def download_sample_csv(st):
             file_name=f'{radio_select.replace(" ","_").lower()}sample.csv',
             mime='text/csv'
         )
+
+def success_box(st):
+    success_message = "Hooray, Emails are sent successfully!"
+    st.markdown(
+    f"""
+    <div style="background-color: #d4edda;; color: #155724; padding: 10px 20px; margin: 10px 0; border-color: #c3e6cb; border: 1px solid transparent; border-radius: 4px; ">
+        {success_message}
+    """,
+    unsafe_allow_html=True
+)
