@@ -1,3 +1,5 @@
+import time
+
 # Function to hide the warning
 def hide_warning(st):
     # Inject custom CSS to hide the specific warning
@@ -11,8 +13,14 @@ def hide_warning(st):
     st.markdown(hide_warning_css, unsafe_allow_html=True)
 
 # Function to refresh the app
-def refresh_app(st, time):
-    st.write(f'<meta http-equiv="refresh" content="{time}">', unsafe_allow_html=True)
+def refresh_app(st, delay):
+    time.sleep(delay)
+    # st.write(f'<meta http-equiv="refresh" content="{time}">', unsafe_allow_html=True)
+    keys_to_clear = ['file_uploaded', 'show_modal', 'resume_data', 'resume_name']
+    for key in keys_to_clear:
+        if key in st.session_state:
+            del st.session_state[key]
+    st.rerun()
 
 # Function to download sample CSV
 def download_sample_csv(st):
