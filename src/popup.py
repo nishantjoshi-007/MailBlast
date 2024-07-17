@@ -4,7 +4,7 @@ def show_modal(st):
 
 # Function to hide the modal
 def hide_modal(st):
-    st.session_state['show_modal'] = None
+    st.session_state['show_modal'] = False
 
 # Function to render the modal with content
 def render_modal(st, content):
