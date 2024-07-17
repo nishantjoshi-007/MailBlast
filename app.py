@@ -35,7 +35,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
             os.remove('token.pickle')
         st.experimental_rerun()
 else:
-    if st.sidebar.button:
+    if st.sidebar.button("Refresh App"):
         utils.refresh_app(st, 0)
     if st.sidebar.button("Login with Google", type='primary'):
         flow = my_gmail.get_flow()
@@ -72,7 +72,6 @@ else:
 st.title("🚀 Welcome to MailBlast: Ultimate Mass Email Sender Tool! 🚀")
 
 if 'creds' in st.session_state and st.session_state['creds']:
-    st.sidebar.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
     utils.download_sample_csv(st) 
 
     user_info = my_gmail.get_user_info(st.session_state['creds'])
@@ -161,5 +160,4 @@ if 'creds' in st.session_state and st.session_state['creds']:
             utils.refresh_app(st, 3)
 else:
     st.write(instructions, unsafe_allow_html=True)
-    st.sidebar.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
     utils.download_sample_csv(st) 
