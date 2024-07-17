@@ -113,18 +113,18 @@ if 'creds' in st.session_state and st.session_state['creds']:
         # attachement
         attachment = st.file_uploader("Upload the Attachment (optional)", type=("pdf"))
         if attachment:
-            st.session_state['attachment_data'] = attachment.getvalue()
-            st.session_state['attachment_name'] = attachment.name
-            st.session_state['show_attachment'] = True
-
-        if 'attachment_data' in st.session_state and st.session_state['attachment_data']:
-            toggle_attachment_label = "Hide Attachment" if st.session_state['show_attachment'] else "Show Attachment"
-            if st.button(toggle_attachment_label):
-                st.session_state['show_attachment'] = not st.session_state['show_attachment']
-                st.experimental_rerun()
-            
-            if st.session_state['show_attachment']:
-                pdf_viewer(input=st.session_state['attachment_data'], width=1920)
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("Show Attachment"):
+                    st.session_state['show_attachment'] = True
+                    st.session_state['attachment_data'] = attachment.getvalue()
+                    st.session_state['attachment_name'] = attachment.name
+                    
+                    if st.session_state['show_attachment'] == True:
+                        pdf_viewer(input=st.session_state['attachment_data'], width=1920)
+            with col2:       
+                if st.button("Hide Attachment"):
+                    st.session_state['show_attachment'] = False
 
         # Allow users to select a predefined template or write their own
         template_option = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"])
