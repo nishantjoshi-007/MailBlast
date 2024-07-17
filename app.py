@@ -118,7 +118,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
             st.session_state['show_attachement'] = True
 
         if 'attachement_data' in st.session_state and st.session_state['attachement_data']:
-            toggle_attachement_label = "Hide Attachment" if st.session_state['show_attachement'] == True else "Show Attachment"
+            toggle_attachement_label = "Hide Attachment" if st.session_state['show_attachement'] else "Show Attachment"
             if st.button(toggle_attachement_label):
                 st.session_state['show_attachement'] = not st.session_state['show_attachement']
             

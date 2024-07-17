@@ -17,16 +17,8 @@ def render_modal(st, content):
         with st.container():
             st.markdown(
                 f"""
-                <div style="background-color: rgba(0, 0, 0, 0.8); padding: 20px; border-radius: 10px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; max-height: 70vh; overflow-y: auto;">
+                <div style="background-color: rgba(0, 0, 0, 0.8); color: white; padding: 20px; border-radius: 10px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; max-height: 70vh; overflow-y: auto;">
                     {content}
                 """,
                 unsafe_allow_html=True
             )
-
-        # Add a semi-transparent overlay when the modal is shown
-        st.markdown(
-            """
-            <div class="overlay" style="position: fixed; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
-            """,
-            unsafe_allow_html=True
-        )
