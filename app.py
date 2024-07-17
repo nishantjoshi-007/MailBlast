@@ -44,9 +44,9 @@ if 'creds' in st.session_state and st.session_state['creds']:
     popup.render_modal(st, instructions)
     
     if st.sidebar.button("Show Instructions"):
-        st.session_state['show_attachement'] = True
+        popup.show_modal(st)
     
-    if st.session_state['show_attachement'] == True:
+    if st.session_state['show_modal'] == True:
         if st.sidebar.button("Hide Popup"):
             popup.hide_modal(st)
 
