@@ -90,7 +90,7 @@ else:
             if os.path.exists('token.pickle'):
                 os.remove('token.pickle')
 
-    if st.sidebar.button("Refresh App"):
+    if st.sidebar.button("Refresh App", help="Refreshing the app will log you out!"):
         utils.refresh_app(st, 0)
 
 # Main app content
@@ -166,34 +166,26 @@ if 'creds' in st.session_state and st.session_state['creds']:
             with st.spinner('Sending emails...'):
                 service = build('gmail', 'v1', credentials=st.session_state['creds'])
                 for index, row in df.iterrows():
-                    try:
-                        row_dict = row.to_dict()
-                        row_dict['user_name'] = user_name
-                        # Replace placeholders with actual data
-                        subject = Template(subject_template).substitute(row_dict)
-                        body = Template(body_template).substitute(row_dict)
+                    row_dict = row.to_dict()
+                    row_dict['user_name'] = user_name
+                    # Replace placeholders with actual data
+                    subject = Template(subject_template).substitute(row_dict)
+                    body = Template(body_template).substitute(row_dict)
 
-                        # Validate email address
-                        try:
-                            validate_email(row['recipient_email'])
-                        except EmailNotValidError as e:
-                            st.error(f"Invalid email address: {row['recipient_email']} - {e}")
-                            continue
+                    # Validate email address
+                    validate_email(row['recipient_email'])
 
-                        # Create message
-                        attachment_data = st.session_state.get('attachment_data', None)
-                        attachment_name = st.session_state.get('attachment_name', None)
-                        message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment_name if attachment else None)
+                    # Create message
+                    attachment_data = st.session_state.get('attachment_data', None)
+                    attachment_name = st.session_state.get('attachment_name', None)
+                    message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment_name if attachment else None)
 
-                        # Send message
-                        my_gmail.send_message(service, 'me', message)
-                        
-                    except Exception as e:
-                        st.error(f"Failed to send email to {row['recipient_email']}. Error: {e}")
-                
-            st.success('All emails have been sent.')
+                    # Send message
+                    my_gmail.send_message(service, 'me', message)
 
-            st.info('Now you can replace the files and send more emails or logout to exit the app.')
+                    #success message
+                    st.success('All emails have been sent.')
+                    st.info('Now you can replace the files and send more emails or logout to exit the app.')
 
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
