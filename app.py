@@ -35,7 +35,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
             os.remove('token.pickle')
         st.experimental_rerun()
 else:
-    st.sidebar.button("Refresh App", on_click=utils.refresh_app(st, 0))
+    if st.sidebar.button:
+        utils.refresh_app(st, 0)
     if st.sidebar.button("Login with Google", type='primary'):
         flow = my_gmail.get_flow()
         flow.redirect_uri = my_gmail.REDIRECT_URI
