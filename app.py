@@ -60,7 +60,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
             
             with popup_col2:       
                 if st.sidebar.button("Hide Instructions"):
-                    st.session_state['show_modal'] = False
+                    popup.hide_modal(st)
+                    #st.session_state['show_modal'] = False
 
 else:
     if st.sidebar.button("Refresh App"):
