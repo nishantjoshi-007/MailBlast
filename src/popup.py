@@ -17,14 +17,14 @@ def render_modal(st, content):
                 f"""
                 <div style="background-color: rgba(0, 0, 0, 0.8); padding: 20px; border-radius: 10px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; max-height: 70vh; overflow-y: auto;">
                     {content}
-                    <button onclick="document.getElementById('close-btn').click()" style="margin-top: 10px;">Close</button>
                 </div>
                 """,
                 unsafe_allow_html=True
             )
 
-        # Hidden Streamlit button to close the modal
-        st.button("Close Popup", key='close-btn', on_click=hide_modal)
+        # Add a Streamlit button to close the modal inside the modal content
+        if st.button("Close Modal"):
+            hide_modal(st)
 
         # Add a semi-transparent overlay when the modal is shown
         st.markdown(
