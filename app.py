@@ -41,17 +41,6 @@ if 'creds' in st.session_state and st.session_state['creds']:
         if os.path.exists('token.pickle'):
             os.remove('token.pickle')
         st.experimental_rerun()
-        
-    # Add popup buttons in the sidebar only if the user is logged in    
-    # if st.sidebar.button("Show Instructions"):
-    #     popup.show_modal(st)
-    #     st.session_state['hide_button'] = True
-    
-    # if st.session_state['show_modal'] == True:
-    #     if st.session_state['hide_button'] == True:
-    #         if st.sidebar.button("Hide Popup"):
-    #             popup.hide_modal(st)
-    #             st.session_state['hide_button'] = False
 
     popup_col1, popup_col2 = st.columns(2)
     with popup_col1:
@@ -62,7 +51,6 @@ if 'creds' in st.session_state and st.session_state['creds']:
             with popup_col2:       
                 if st.sidebar.button("Hide Instructions"):
                     popup.hide_modal(st)
-                    #st.session_state['show_modal'] = False
 
 else:
     if st.sidebar.button("Refresh App"):
@@ -197,12 +185,13 @@ if 'creds' in st.session_state and st.session_state['creds']:
                         my_gmail.send_message(service, 'me', message)
                         
                         st.success(f"Email sent to {row['recipient_email']}")
+                        email_sent_successfully = True
                     except Exception as e:
                         st.error(f"Failed to send email to {row['recipient_email']}. Error: {e}")
-                        email_sent_successfully = False
+                        email_sent_successfully = False                    
                 
-                if email_sent_successfully:
-                    st.success('All emails have been sent.')
+        if email_sent_successfully == True:
+            st.success('All emails have been sent.')
 
             # Auto-refresh the app after a short delay
             utils.refresh_app(st, 3)
