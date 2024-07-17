@@ -4,12 +4,12 @@ def show_modal(st):
 
 # Function to hide the modal
 def hide_modal(st):
-    st.session_state['show_modal'] = False
+    st.session_state['show_modal'] = None
 
 # Function to render the modal with content
 def render_modal(st, content):
     if 'show_modal' not in st.session_state:
-        st.session_state['show_modal'] = False
+        st.session_state['show_modal'] = None
 
     if st.session_state['show_modal']:
         with st.container():
@@ -21,9 +21,6 @@ def render_modal(st, content):
                 """,
                 unsafe_allow_html=True
             )
-
-        if st.sidebar.button("Close Popup"):
-            hide_modal(st)
 
         # Add a semi-transparent overlay when the modal is shown
         st.markdown(

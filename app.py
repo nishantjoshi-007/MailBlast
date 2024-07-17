@@ -19,7 +19,7 @@ utils.hide_warning(st)
 if 'state' not in st.session_state:
     st.session_state['state'] = None
 if 'show_modal' not in st.session_state:
-    st.session_state['show_modal'] = False
+    st.session_state['show_modal'] = None
 if 'creds' not in st.session_state:
     st.session_state['creds'] = my_gmail.load_credentials()
 
@@ -83,7 +83,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
         st.write(f"Welcome to MailBlast, {user_name} ({user_email})")
         
         #popup for instructions when logged in   
-        if st.session_state['show_modal']:
+        if st.session_state['show_modal'] == True:
             if st.sidebar.button("Close Popup"):
                 popup.hide_modal(st)
         else:
