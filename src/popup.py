@@ -22,10 +22,6 @@ def render_modal(st, content):
                 unsafe_allow_html=True
             )
 
-        # Add a Streamlit button to close the modal inside the modal content
-        if st.button("Close Modal"):
-            hide_modal(st)
-
         # Add a semi-transparent overlay when the modal is shown
         st.markdown(
             """
@@ -44,3 +40,7 @@ def render_modal(st, content):
             """,
             unsafe_allow_html=True
         )
+        
+        # Add a Streamlit button to close the modal inside the modal content
+        if st.button("Close Popup"):
+            hide_modal(st)

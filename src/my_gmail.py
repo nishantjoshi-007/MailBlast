@@ -18,15 +18,11 @@ REDIRECT_URI = os.getenv('redirect_uris')
 SCOPES = ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/gmail.send', 'openid']
 
 def save_credentials(creds):
-    with open('token.pickle', 'wb') as token:
-        pickle.dump(creds, token)
     st.session_state['creds'] = creds
 
 def load_credentials():
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            creds = pickle.load(token)
-            return creds
+    if 'creds' in st.session_state:
+        return st.session_state['creds']
     return None
 
 def get_user_info(creds):

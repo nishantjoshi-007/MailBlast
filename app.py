@@ -82,7 +82,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
     
         if st.sidebar.button("Open Popup"):
             popup.show_modal(st)
-            popup.render_modal(st, instructions)
+        
+        popup.render_modal(st, instructions)
         
         utils.download_sample_csv(st) 
     
