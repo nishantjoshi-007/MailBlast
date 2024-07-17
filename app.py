@@ -183,10 +183,9 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     # Send message
                     my_gmail.send_message(service, 'me', message)
 
-                    #success message
-                    st.success('All emails have been sent.')
-                    st.write("Email Sent.")
-                    st.info('Now you can replace the files and send more emails or logout to exit the app.')
+                #success message
+                st.write("Email Sent.")
+                st.info('Now you can replace the files and send more emails or logout to exit the app.')
 
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
