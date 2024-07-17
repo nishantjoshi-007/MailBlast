@@ -41,11 +41,13 @@ if 'creds' in st.session_state and st.session_state['creds']:
         st.experimental_rerun()
         
     # Add popup buttons in the sidebar only if the user is logged in
+    popup.render_modal(st, instructions)
+    
     if st.sidebar.button("Show Instructions"):
         st.session_state['show_attachement'] = True
     
     if st.session_state['show_attachement'] == True:
-        if st.button("Hide Popup"):
+        if st.sidebar.button("Hide Popup"):
             popup.hide_modal(st)
 
 else:
@@ -189,5 +191,3 @@ if 'creds' in st.session_state and st.session_state['creds']:
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
     utils.download_sample_csv(st) 
-
-popup.render_modal(st, instructions)
