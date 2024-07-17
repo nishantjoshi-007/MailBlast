@@ -22,6 +22,8 @@ if 'show_modal' not in st.session_state:
     st.session_state['show_modal'] = False
 if 'show_attachement' not in st.session_state:
     st.session_state['show_attachement'] = False
+if 'show_attachement' not in st.session_state:
+    st.session_state['hide_button'] = False
 if 'creds' not in st.session_state:
     st.session_state['creds'] = my_gmail.load_credentials()
 
@@ -43,20 +45,13 @@ if 'creds' in st.session_state and st.session_state['creds']:
     # Add popup buttons in the sidebar only if the user is logged in    
     if st.sidebar.button("Show Instructions"):
         popup.show_modal(st)
+        st.session_state['hide_button'] = True
     
     if st.session_state['show_modal'] == True:
-        if st.sidebar.button("Hide Popup"):
-            popup.hide_modal(st)
-    
-    # # Add popup buttons in the sidebar only if the user is logged in    
-    # if not st.session_state['show_modal'] and st.sidebar.button("Show Instructions"):
-    #     st.session_state['show_modal'] = True
-    #     popup.show_modal(st)
-    
-    # if st.session_state['show_modal']:
-    #     if st.sidebar.button("Hide Popup"):
-    #         st.session_state['show_modal'] = False
-    #         popup.hide_modal(st)
+        if st.session_state['hide_button'] == True:
+            if st.sidebar.button("Hide Popup"):
+                popup.hide_modal(st)
+                st.session_state['hide_button'] = False
 
 else:
     if st.sidebar.button("Refresh App"):
@@ -192,10 +187,10 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     except Exception as e:
                         st.error(f"Failed to send email to {row['recipient_email']}. Error: {e}")
             
-                st.success('All emails have been sent.')
+            st.success('All emails have been sent.')
                         
                 # Auto-refresh the app after a short delay
-                utils.refresh_app(st, 3)
+            utils.refresh_app(st, 3)
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
     utils.download_sample_csv(st) 
