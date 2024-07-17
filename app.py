@@ -1,4 +1,4 @@
-import os
+import os, time
 import streamlit as st
 import pandas as pd
 from streamlit_pdf_viewer import pdf_viewer
@@ -22,6 +22,17 @@ if 'email_sent' not in st.session_state:
     st.session_state['email_sent'] = False
 if 'creds' not in st.session_state:
     st.session_state['creds'] = my_gmail.load_credentials()
+if 'last_activity' not in st.session_state:
+    st.session_state['last_activity'] = time.time()
+
+# Define session timeout in seconds (e.g., 30 minutes)
+SESSION_TIMEOUT = 30 * 60
+
+# Update last activity timestamp
+st.session_state['last_activity'] = time.time()
+
+# Check for session timeout
+utils.check_session_timeout(st, SESSION_TIMEOUT)
 
 # Sidebar for login/logout
 if 'creds' in st.session_state and st.session_state['creds']:
@@ -186,12 +197,11 @@ if 'creds' in st.session_state and st.session_state['creds']:
                         st.error(f"Failed to send email to {row['recipient_email']}. Error: {e}")
                         email_sent_successfully = False                    
                 
-        if st.session_state['email_sent'] == True:
-            if email_sent_successfully == True:
-                st.success('All emails have been sent.')
+                if email_sent_successfully == True:
+                    st.success('All emails have been sent.')
 
-                # Auto-refresh the app after a short delay
+                # Auto-refresh the app after a short delay without logging out
                 utils.refresh_app(st, 3)
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
-    utils.download_sample_csv(st) 
+    utils.download_sample_csv(st)

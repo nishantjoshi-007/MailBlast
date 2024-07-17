@@ -1,4 +1,4 @@
-import time
+import time, os
 
 # Function to hide the warning
 def hide_warning(st):
@@ -49,3 +49,11 @@ def download_sample_csv(st):
             file_name=f'{radio_select.replace(" ","_").lower()}sample.csv',
             mime='text/csv'
         )
+        
+# Function to check session timeout
+def check_session_timeout(st, SESSION_TIMEOUT):
+    if time.time() - st.session_state['last_activity'] > SESSION_TIMEOUT:
+        st.session_state.clear()
+        if os.path.exists('token.pickle'):
+            os.remove('token.pickle')
+        st.experimental_rerun()
