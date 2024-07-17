@@ -20,6 +20,8 @@ if 'state' not in st.session_state:
     st.session_state['state'] = None
 if 'show_modal' not in st.session_state:
     st.session_state['show_modal'] = False
+if 'show_attachement' not in st.session_state:
+    st.session_state['show_attachement'] = False
 if 'creds' not in st.session_state:
     st.session_state['creds'] = my_gmail.load_credentials()
 
@@ -108,11 +110,20 @@ if 'creds' in st.session_state and st.session_state['creds']:
 
         st.dataframe(df)
 
-        # Resume
-        resume = st.file_uploader("Upload the resume", type=("pdf"))
-        if resume and not st.button('Hide'):
-            resume_data = resume.getvalue()
-            pdf_viewer(input=resume_data, width=1920)
+        # attachement
+        attachement = st.file_uploader("Upload the Attachment (optional)", type=("pdf"))
+        if attachement:
+            st.session_state['attachement_data'] = attachement.getvalue()
+            st.session_state['attachement_name'] = attachement.name
+            st.session_state['show_attachement'] = True
+
+        if 'attachement_data' in st.session_state and st.session_state['attachement_data']:
+            toggle_attachement_label = "Hide Attachment" if st.session_state['show_attachement'] else "Show Attachment"
+            if st.button(toggle_attachement_label):
+                st.session_state['show_attachement'] = not st.session_state['show_attachement']
+            
+            if st.session_state['show_attachement']:
+                pdf_viewer(input=st.session_state['attachement_data'], width=1920)
 
         # Allow users to select a predefined template or write their own
         template_option = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"])
@@ -158,7 +169,9 @@ if 'creds' in st.session_state and st.session_state['creds']:
                             continue
 
                         # Create message
-                        message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, resume_data, resume.name if resume else None)
+                        attachement_data = st.session_state.get('attachement_data', None)
+                        attachement_name = st.session_state.get('attachement_name', None)
+                        message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachement_data, attachement.name if attachement else None)
 
                         # Send message
                         my_gmail.send_message(service, 'me', message)

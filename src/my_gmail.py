@@ -40,18 +40,18 @@ def refresh_token_if_expired(creds):
         save_credentials(creds)
     return creds
 
-def create_message(sender, to, subject, message_text, resume_data=None, resume_name=None):
+def create_message(sender, to, subject, message_text, attachment_data=None, attachment_name=None):
     message = MIMEMultipart()
     message['to'] = to
     message['from'] = sender
     message['subject'] = subject
     msg = MIMEText(message_text, 'html')
     message.attach(msg)
-    if resume_data and resume_name:
+    if attachment_data and attachment_name:
         part = MIMEBase('application', 'octet-stream')
-        part.set_payload(resume_data)
+        part.set_payload(attachment_data)
         encoders.encode_base64(part)
-        part.add_header('Content-Disposition', f'attachment; filename={resume_name}')
+        part.add_header('Content-Disposition', f'attachment; filename={attachment_name}')
         message.attach(part)
     raw = base64.urlsafe_b64encode(message.as_bytes()).decode()
     return {'raw': raw}
