@@ -39,7 +39,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
         st.experimental_rerun()
         
     # Add popup buttons in the sidebar only if the user is logged in
-    toggle_button_label = "Close Modal" if st.session_state['show_modal'] else "Show Modal"
+    toggle_button_label = "Close Popup" if st.session_state['show_modal'] else "Show Instructions"
     if st.sidebar.button(toggle_button_label):
         if st.session_state['show_modal']:
             popup.hide_modal(st)
