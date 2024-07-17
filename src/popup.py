@@ -11,7 +11,7 @@ def render_modal(st, content):
     if 'show_modal' not in st.session_state:
         st.session_state['show_modal'] = None
 
-    if st.session_state['show_modal']:
+    if st.session_state['show_modal'] == True:
         with st.container():
             st.markdown(
                 f"""
