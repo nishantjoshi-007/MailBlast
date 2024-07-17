@@ -84,13 +84,15 @@ if 'creds' in st.session_state and st.session_state['creds']:
         
         #popup for instructions when logged in           
         if st.session_state['show_modal'] == True:
-            if st.sidebar.button("Close Popup"):
+            close_popup = st.sidebar.button("Close Popup")
+            if close_popup:
                 popup.hide_modal(st)
         else:
             st.session_state['show_modal'] = False
         
         if st.session_state['show_modal'] == False:
-            if st.sidebar.button("Show Popup"):
+            show_popup = st.sidebar.button("Show Popup")
+            if show_popup:
                 popup.show_modal(st)
                 popup.render_modal(st, instructions)
             
