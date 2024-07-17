@@ -14,7 +14,6 @@ def hide_warning(st):
 def refresh_app(st, time):
     st.write(f'<meta http-equiv="refresh" content="{time}">', unsafe_allow_html=True)
 
-
 # Function to download sample CSV
 def download_sample_csv(st):
     
@@ -28,7 +27,7 @@ def download_sample_csv(st):
 
     #radio button to select the template
     radio_select = st.sidebar.radio("Select a Template for which you want to Download Sample", 
-                     ["Event Invite", "Job Application", "Product Launch", "Referral Request"])
+                     ["Event Invite", "Job Application", "Product Launch", "Referral Request"], index=None)
     
     if radio_select:
         #open the file and read the content

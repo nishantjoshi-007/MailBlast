@@ -9,6 +9,7 @@ from string import Template
 import src.my_gmail as my_gmail, src.templates as templates
 from src.instructions import instructions
 from src import utils
+from src import popup
 
 st.set_page_config("MailBlast", "./static/logo.png")
 
@@ -72,14 +73,19 @@ else:
 st.title("🚀 Welcome to MailBlast: Ultimate Mass Email Sender Tool! 🚀")
 
 if 'creds' in st.session_state and st.session_state['creds']:
-    utils.download_sample_csv(st) 
 
     user_info = my_gmail.get_user_info(st.session_state['creds'])
     if user_info:
         user_email = user_info.get('email')
         user_name = user_info.get('name')
-        st.write(f"Welcome, {user_name} ({user_email})")
-
+        st.write(f"Welcome to MailBlast, {user_name} ({user_email})")
+    
+        if st.sidebar.button("Open Popup"):
+            popup.show_modal(st)
+            popup.render_modal(st, instructions)
+        
+        utils.download_sample_csv(st) 
+    
     # Handle file upload
     uploaded_file = st.file_uploader('Please upload the Excel/csv file.', type=['csv', 'xls', 'xlsx'])
     if uploaded_file is not None:
