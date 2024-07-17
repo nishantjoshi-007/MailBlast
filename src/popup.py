@@ -22,6 +22,9 @@ def render_modal(st, content):
                 unsafe_allow_html=True
             )
 
+        if st.sidebar.button("Close Popup"):
+            hide_modal(st)
+
         # Add a semi-transparent overlay when the modal is shown
         st.markdown(
             """
