@@ -139,7 +139,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     if st.button("Hide Attachments"):
                         st.session_state['show_attachments'] = False
 
-            if st.session_state.get('show_attachments', False):
+            if st.session_state.get('show_attachments') == True:
                 for idx, attachment in enumerate(st.session_state['attachments']):
                     st.write(f"Attachment {idx+1}: {attachment.name}")
                     utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)
