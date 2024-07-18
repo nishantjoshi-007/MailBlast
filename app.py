@@ -144,8 +144,6 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     st.write(f"Attachment {idx+1}: {attachment.name}")
                     utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)
                     st.divider()
-        else:
-            st.session_state['show_attachments'] = False
 
         # Allow users to select a predefined template or write their own
         st.session_state['template_option'] = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"], index=None)
