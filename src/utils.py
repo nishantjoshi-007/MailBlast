@@ -62,3 +62,5 @@ def attachement_file_type(st, attachment, pdf_viewer, index, pd):
         st.image(attachment.getvalue())
     else:
         st.write(attachment.getvalue())
+        
+        
