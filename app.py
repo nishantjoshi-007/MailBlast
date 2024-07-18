@@ -130,20 +130,30 @@ if 'creds' in st.session_state and st.session_state['creds']:
         # attachement
         attachments = st.file_uploader("Upload the Attachment (optional)", type=None, accept_multiple_files=True)
         if attachments:
+            if 'attachments' not in st.session_state:
+                st.session_state['attachments'] = []
+
+            for attachment in attachments:
+                attachment_data = attachment.getvalue()
+                attachment_name = attachment.name
+                st.session_state['attachments'].append({'data': attachment_data, 'name': attachment_name})
+            
             attach_col1, attach_col2 = st.columns(2)
             with attach_col1:
                 if st.button("Show Attachment"):
-                    for idx, attachment in enumerate(attachments):
-                        st.session_state['show_attachment'] = True
-                        st.session_state['attachment_data'] = attachment.getvalue()
-                        st.session_state['attachment_name'] = attachment.name
-                    
-                        if st.session_state['show_attachment'] == True:
-                            utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)                    
+                    # for idx, attachment in enumerate(attachments):
+                    st.session_state['show_attachment'] = True
+                        # st.session_state['attachment_data'] = attachment.getvalue()
+                        # st.session_state['attachment_name'] = attachment.name                  
                     
                     with attach_col2:       
-                        if st.button("Hide Attachment", key=f"hide_attachment_{idx}"):
+                        if st.button("Hide Attachment"):
                             st.session_state['show_attachment'] = False
+
+            if st.session_state['show_attachment'] == True:
+                for idx, attachment in enumerate(st.session_state['attachments']):
+                    st.write(f"Attachment: {attachment['name']}")
+                    utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)  
 
         # Create message
         attachment_data = st.session_state.get('attachment_data', None)
@@ -173,15 +183,19 @@ if 'creds' in st.session_state and st.session_state['creds']:
                 preview_row['user_name'] = user_name
                 subject = Template(subject_template).substitute(preview_row)
                 body = Template(body_template).substitute(preview_row)
-                
+
+                if 'attachments' in st.session_state and st.session_state['attachments']:
+                    attachment_names = "\n\nAttachments:\n" + "\n".join([attachment['name'] for attachment in st.session_state['attachments']])
+                    body += attachment_names
+
                 if st.session_state['custom_subject'] == "" or st.session_state['custom_subject'] == None:
                     st.subheader('Email Preview')
                     st.html(f'Subject: {subject}')
-                    st.html(f'Body:\n{body} \n Attachments:\n{attachment_name}')
+                    st.html(f'Body:\n{body}')
                 else:
                     st.subheader('Email Preview')
                     st.write(f'Subject: {subject}')
-                    st.write(f'Body:\n{body} \n Attachments:\n{attachment_name}')
+                    st.write(f'Body:\n{body}')
 
         # Send emails
         if st.button('Send Emails'):
@@ -198,7 +212,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     # Validate email address
                     validate_email(row['recipient_email'])
 
-                    message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment_name if attachment else None, mime_type=mime_type)
+                    message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachments, mime_type=mime_type)
+                    # message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment_name if attachment else None, mime_type=mime_type)
 
                     # Send message
                     my_gmail.send_message(service, 'me', message)
