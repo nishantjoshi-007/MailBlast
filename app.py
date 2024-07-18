@@ -136,9 +136,9 @@ if 'creds' in st.session_state and st.session_state['creds']:
                 if st.button("Show Attachments"):
                     st.session_state['show_attachments'] = True
             
-            with attach_col2:       
-                if st.button("Hide Attachments"):
-                    st.session_state['show_attachments'] = False
+                    with attach_col2:       
+                        if st.button("Hide Attachments"):
+                            st.session_state['show_attachments'] = False
         
             if st.session_state['show_attachments']:
                 for idx, attachment in enumerate(st.session_state['attachments']):
@@ -172,7 +172,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
                 body = Template(body_template).substitute(preview_row)
 
                 if 'attachments' in st.session_state and st.session_state['attachments']:
-                    attachment_names = "\n\nAttachments:\n" + "\n".join([attachment['name'] for attachment in st.session_state['attachments']])
+                    attachment_names = "\n\nAttachments:\n" + "\n".join([attachment.name for attachment in st.session_state['attachments']])
                     body += attachment_names
 
                 if st.session_state['custom_subject'] == "" or st.session_state['custom_subject'] == None:
