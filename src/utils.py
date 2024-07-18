@@ -51,20 +51,6 @@ def success_box(st):
     """,
     unsafe_allow_html=True
 )
-
-def manage_attachments(st, attachments):
-    if 'attachments' not in st.session_state:
-        st.session_state['attachments'] = []
-
-    for attachment in attachments:
-        attachment_data = attachment.getvalue()
-        attachment_name = attachment.name
-        st.session_state['attachments'].append({'data': attachment_data, 'name': attachment_name})
-        
-# Function to reset attachments
-def reset_attachments(st):
-    st.session_state['attachments'] = []
-    st.session_state['show_attachment'] = False
  
 def attachement_file_type(st, attachment, pdf_viewer, index, pd):
     if attachment.name.lower().endswith('.pdf'):
