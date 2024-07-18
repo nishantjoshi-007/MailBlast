@@ -136,9 +136,9 @@ if 'creds' in st.session_state and st.session_state['creds']:
                 if st.button("Show Attachments"):
                     st.session_state['show_attachments'] = True
             
-                    with attach_col2:       
-                        if st.button("Hide Attachments"):
-                            st.session_state['show_attachments'] = False
+            with attach_col2:       
+                if st.button("Hide Attachments"):
+                    st.session_state['show_attachments'] = False
         
             if st.session_state['show_attachments']:
                 for idx, attachment in enumerate(st.session_state['attachments']):
@@ -198,7 +198,10 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     # Validate email address
                     validate_email(row['recipient_email'])
 
-                    message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachments, mime_type=mime_type)
+                    # Collect attachments
+                    attachments_email = [{'data': attachment.getvalue(), 'name': attachment.name} for attachment in st.session_state['attachments']]
+
+                    message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachments_email, mime_type=mime_type)
                     # message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment_name if attachment else None, mime_type=mime_type)
 
                     # Send message
