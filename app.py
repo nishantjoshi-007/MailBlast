@@ -145,17 +145,13 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     st.session_state['show_attachments'] = True
                     
             if st.session_state.get('show_attachments', False):
-                for attachment in st.session_state['attachments']:
+                for idx, attachment in enumerate(st.session_state['attachments']):
                     st.write(f"Attachment: {attachment['name']}")
-                    utils.attachement_file_type(st, attachment, pdf_viewer, pd)
+                    utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)
                     
                     with attach_col2:       
                         if st.button("Hide Attachments"):
                             st.session_state['show_attachments'] = False
-
-        # Create message
-        attachment_data = st.session_state.get('attachment_data', None)
-        attachment_name = st.session_state.get('attachment_name', None)
 
         # Allow users to select a predefined template or write their own
         st.session_state['template_option'] = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"], index=None)
@@ -182,14 +178,18 @@ if 'creds' in st.session_state and st.session_state['creds']:
                 subject = Template(subject_template).substitute(preview_row)
                 body = Template(body_template).substitute(preview_row)
                 
+                # Append attachment names to the email body
+                attachment_names = "\n\nAttachments:\n" + "\n".join([attachment['name'] for attachment in st.session_state['attachments']])
+                body += attachment_names
+                
                 if st.session_state['custom_subject'] == "" or st.session_state['custom_subject'] == None:
                     st.subheader('Email Preview')
                     st.html(f'Subject: {subject}')
-                    st.html(f'Body:\n{body} \n Attachments:\n{attachment_name}')
+                    st.html(f'Body:\n{body}')
                 else:
                     st.subheader('Email Preview')
                     st.write(f'Subject: {subject}')
-                    st.write(f'Body:\n{body} \n Attachments:\n{attachment_name}')
+                    st.write(f'Body:\n{body}')
 
         # Send emails
         if st.button('Send Emails'):
