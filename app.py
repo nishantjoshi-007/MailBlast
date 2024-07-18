@@ -8,8 +8,7 @@ from googleapiclient.discovery import build
 from string import Template 
 import src.my_gmail as my_gmail, src.templates as templates
 from src.instructions import instructions, home_page_instructions
-from src import utils
-from src import popup
+from src import utils, popup
 
 st.set_page_config("MailBlast", "./static/logo.png")
 
@@ -148,8 +147,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
             if st.session_state.get('show_attachments', False):
                 for attachment in st.session_state['attachments']:
                     st.write(f"Attachment: {attachment['name']}")
-                    if attachment['name'].endswith('.pdf'):
-                        pdf_viewer(input=attachment['data'], width=1920, height=1080)
+                    utils.attachement_file_type(st, attachment, pdf_viewer, pd)
                     
                     with attach_col2:       
                         if st.button("Hide Attachments"):

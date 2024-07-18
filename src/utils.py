@@ -51,3 +51,14 @@ def success_box(st):
     """,
     unsafe_allow_html=True
 )
+    
+def attachement_file_type(st, attachment, pdf_viewer, pd):
+    if attachment['name'].endswith('.pdf'):
+        pdf_viewer(input=attachment['data'], width=1920, height=1080)
+    elif attachment['name'].endswith('.csv') or attachment['name'].endswith('.xls') or attachment['name'].endswith('.xlsx'):
+        df_attachment = pd.read_csv(attachment['data'])
+        st.dataframe(df_attachment)
+    elif attachment['name'].endswith('.png') or attachment['name'].endswith('.jpg') or attachment['name'].endswith('.jpeg'):
+        st.image(attachment['data'])
+    else:
+        st.write(attachment['data'])
