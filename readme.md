@@ -1,6 +1,6 @@
 # :star2: MailBlast
 <div align='center'>
-Welcome to the 'MailBlast' Github Repository. This project is a Streamlit-based web application that allows users to send personalized mass emails using a template with placeholder details obtained from a CSV file. The tool features email previews, attachment support, ensuring an organized email management experience. Designed to be user-friendly and efficient, it caters to various needs like job applications, marketing campaigns, and personal outreach. Dive into the repository to see the code and try out the app.<h4> <span> · </span> <a href="https://github.com/nishantjoshi-007/MailBlast/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/nishantjoshi-007/MailBlast/issues"> Request Feature </a> </h4>
+Welcome to the 'MailBlast' Github Repository. This project is a Streamlit-based web application that allows users to send personalized mass emails using templates with placeholder details obtained from a CSV file. The tool features email previews, dynamic attachment support, and session management, ensuring an organized and efficient email management experience. Designed to be user-friendly and versatile, it caters to various needs like job applications, marketing campaigns, and personal outreach. With secure Google authentication, users can safely log in to manage their emails without worrying about unauthorized access. Dive into the repository to see the code and try out the app.<h4><span> · </span> <a href="https://mailblast-6c6feeaddab0.herokuapp.com/"> Live Demo </a><span> · </span> <a href="https://github.com/nishantjoshi-007/MailBlast/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/nishantjoshi-007/MailBlast/issues"> Request Feature </a></h4>
 </div>
 
 # :notebook_with_decorative_cover: Table of Contents
@@ -36,10 +36,12 @@ Welcome to the 'MailBlast' Github Repository. This project is a Streamlit-based 
    streamlit run app.py
    ```
 
-### :dart: Features
-- **Email Personalization**: Easily replace placeholders in the email template with details from the CSV file for each recipient.
-- **Email Preview**: Preview emails before sending to ensure all placeholders are correctly replaced.
-- **Attachment Support**: Attach a resume or any file to the emails.
+## :dart: Features
+- **Email Personalization**: Easily replace placeholders in the email template with details from the CSV file for each recipient. Custom templates can be created to suit any purpose.
+- **Email Preview**: Preview emails before sending to ensure all placeholders are correctly replaced and attachments are included.
+- **Attachment Support**: Attach multiple files of any type to the emails. Preview attachments directly within the app.
+- **Instructions and Templates**: Downloadable sample CSV files and detailed instructions are provided to help users format their data correctly and utilize the predefined templates.
+- **Google Authentication**: Secure login with Google OAuth ensures that your email credentials are safe and your email sending is protected from unauthorized access.
 - **Daily Sending Limits**: Adheres to Gmail's daily sending limits to avoid account suspension.
 
 ## :compass: Use Cases
