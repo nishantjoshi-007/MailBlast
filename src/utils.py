@@ -52,15 +52,13 @@ def success_box(st):
     unsafe_allow_html=True
 )
     
-def attachement_file_type(st, attachment, pdf_viewer, index, pd):
-    if attachment.name.endswith('.pdf'):
-        pdf_viewer(input=attachment.getvalue(), width=1920, height=1080, key=f"pdf_viewer_{index}")
-    elif attachment.name.endswith('.csv') or attachment.name.endswith('.xls') or attachment.name.endswith('.xlsx'):
-        df_attachment = pd.read_csv(attachment.getvalue())
+def attachement_file_type(st, attachment, pdf_viewer, idx, pd):
+    if attachment['name'].endswith('.pdf'):
+        pdf_viewer(input=attachment['data'], width=1920, height=1080, key=f"pdf_viewer_{idx}")
+    elif attachment['name'].endswith('.csv') or attachment['name'].endswith('.xls') or attachment['name'].endswith('.xlsx'):
+        df_attachment = pd.read_csv(attachment['data'])
         st.dataframe(df_attachment)
-    elif attachment.name.endswith('.png') or attachment.name.endswith('.jpg') or attachment.name.endswith('.jpeg'):
-        st.image(attachment.getvalue())
+    elif attachment['name'].endswith('.png') or attachment['name'].endswith('.jpg') or attachment['name'].endswith('.jpeg'):
+        st.image(attachment['data'])
     else:
-        st.write(attachment.getvalue())
-        
-        
+        st.write(attachment['data'])
