@@ -135,15 +135,15 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     if st.button("Show Attachments"):
                         st.session_state['show_attachments'] = True
                 
-                with attach_col2:       
-                    if st.button("Hide Attachments"):
-                        st.session_state['show_attachments'] = False
+                    with attach_col2:       
+                        if st.button("Hide Attachments"):
+                            st.session_state['show_attachments'] = False
 
-            if st.session_state.get('show_attachments') == True:
-                for idx, attachment in enumerate(st.session_state['attachments']):
-                    st.write(f"Attachment {idx+1}: {attachment.name}")
-                    utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)
-                    st.divider()
+                if st.session_state.get('show_attachments') == True:
+                    for idx, attachment in enumerate(st.session_state['attachments']):
+                        st.write(f"Attachment {idx+1}: {attachment.name}")
+                        utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)
+                        st.divider()
 
         # Allow users to select a predefined template or write their own
         st.session_state['template_option'] = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"], index=None)
