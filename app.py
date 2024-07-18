@@ -18,8 +18,6 @@ utils.hide_warning(st)
 # Initialize session state variables
 if 'state' not in st.session_state:
     st.session_state['state'] = None
-if 'email_sent' not in st.session_state:
-    st.session_state['email_sent'] = False
 if 'creds' not in st.session_state:
     st.session_state['creds'] = my_gmail.load_credentials()
 if 'custom_subject' not in st.session_state:
@@ -28,10 +26,8 @@ if 'custom_body' not in st.session_state:
     st.session_state['custom_body'] = ""
 if 'template_option' not in st.session_state:
     st.session_state['template_option'] = "Custom"
-if 'attachments' not in st.session_state:
-    st.session_state['attachments'] = []
 if 'show_attachment' not in st.session_state:
-    st.session_state['show_attachment'] = None
+    st.session_state['show_attachment'] = False
 
 # Sidebar for login/logout
 if 'creds' in st.session_state and st.session_state['creds']:                    
@@ -129,28 +125,24 @@ if 'creds' in st.session_state and st.session_state['creds']:
 
         st.dataframe(df)
 
-        # attachement
-        attachments = st.file_uploader("Upload the Attachment (optional)", type=None, accept_multiple_files=True)
+        attachments = st.file_uploader("Upload the Attachment(s) (optional)", type=None, accept_multiple_files=True)
         if attachments:
-            utils.manage_attachments(st, attachments)
+            st.session_state['attachments'] = attachments
             
             attach_col1, attach_col2 = st.columns(2)
             with attach_col1:
-                if st.button("Show Attachment"):
-                    st.session_state['show_attachment'] = True
-                    
-                    # for idx, attachment in enumerate(attachments):
-                        # st.session_state['attachment_data'] = attachment.getvalue()
-                        # st.session_state['attachment_name'] = attachment.name                  
-                    
+                if st.button("Show Attachments"):
+                    st.session_state['show_attachments'] = True
+            
                     with attach_col2:       
-                        if st.button("Hide Attachment"):
-                            st.session_state['show_attachment'] = False
+                        if st.button("Hide Attachments"):
+                            st.session_state['show_attachments'] = False
 
-            if st.session_state['show_attachment']:
-                for idx, attachment in enumerate(st.session_state['attachments']):
-                    st.write(f"Attachment: {attachment['name']}")
+            if st.session_state.get('show_attachments', False):
+                for idx, attachment in enumerate(attachments):
+                    st.write(f"Attachment {idx+1}: {attachment.name}")
                     utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)
+                    st.divider()
  
 
         # Allow users to select a predefined template or write their own
@@ -193,7 +185,6 @@ if 'creds' in st.session_state and st.session_state['creds']:
 
         # Send emails
         if st.button('Send Emails'):
-            st.session_state['email_sent'] = True
             with st.spinner('Sending emails...'):
                 service = build('gmail', 'v1', credentials=st.session_state['creds'])
                 for index, row in df.iterrows():
