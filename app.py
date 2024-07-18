@@ -28,6 +28,8 @@ if 'custom_body' not in st.session_state:
     st.session_state['custom_body'] = ""
 if 'template_option' not in st.session_state:
     st.session_state['template_option'] = "Custom"
+if 'attachments' not in st.session_state:
+    st.session_state['attachments'] = []
 
 # Sidebar for login/logout
 if 'creds' in st.session_state and st.session_state['creds']:                    
@@ -126,21 +128,36 @@ if 'creds' in st.session_state and st.session_state['creds']:
         st.dataframe(df)
 
         # attachement
-        attachment = st.file_uploader("Upload the Attachment (optional)", type=("pdf"))
-        if attachment:
+        attachments = st.file_uploader("Upload the Attachment (optional)", type=None, accept_multiple_files=True)
+
+        if attachments:
+            if 'attachments' not in st.session_state:
+                st.session_state['attachments'] = []
+
+            for attachment in attachments:
+                attachment_data = attachment.getvalue()
+                attachment_name = attachment.name
+                st.session_state['attachments'].append({'data': attachment_data, 'name': attachment_name})        
+
+        if 'attachments' in st.session_state and st.session_state['attachments']:
             attach_col1, attach_col2 = st.columns(2)
             with attach_col1:
-                if st.button("Show Attachment"):
-                    st.session_state['show_attachment'] = True
-                    st.session_state['attachment_data'] = attachment.getvalue()
-                    st.session_state['attachment_name'] = attachment.name
+                if st.button("Show Attachments"):
+                    st.session_state['show_attachments'] = True
                     
-                    if st.session_state['show_attachment'] == True:
-                        pdf_viewer(input=st.session_state['attachment_data'], width=1920, height=1080)
+            if st.session_state.get('show_attachments', False):
+                for attachment in st.session_state['attachments']:
+                    st.write(f"Attachment: {attachment['name']}")
+                    if attachment['name'].endswith('.pdf'):
+                        pdf_viewer(input=attachment['data'], width=1920, height=1080)
                     
                     with attach_col2:       
-                        if st.button("Hide Attachment"):
-                            st.session_state['show_attachment'] = False
+                        if st.button("Hide Attachments"):
+                            st.session_state['show_attachments'] = False
+
+        # Create message
+        attachment_data = st.session_state.get('attachment_data', None)
+        attachment_name = st.session_state.get('attachment_name', None)
 
         # Allow users to select a predefined template or write their own
         st.session_state['template_option'] = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"], index=None)
@@ -170,11 +187,11 @@ if 'creds' in st.session_state and st.session_state['creds']:
                 if st.session_state['custom_subject'] == "" or st.session_state['custom_subject'] == None:
                     st.subheader('Email Preview')
                     st.html(f'Subject: {subject}')
-                    st.html(f'Body:\n{body} \n Attachments:\n{st.session_state["attachment_name"]}')
+                    st.html(f'Body:\n{body} \n Attachments:\n{attachment_name}')
                 else:
                     st.subheader('Email Preview')
                     st.write(f'Subject: {subject}')
-                    st.write(f'Body:\n{body} \n Attachments:\n{st.session_state["attachment_name"]}')
+                    st.write(f'Body:\n{body} \n Attachments:\n{attachment_name}')
 
         # Send emails
         if st.button('Send Emails'):
@@ -190,11 +207,11 @@ if 'creds' in st.session_state and st.session_state['creds']:
 
                     # Validate email address
                     validate_email(row['recipient_email'])
+                    
+                    attachments = st.session_state.get('attachments', [])
+                    message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachments, mime_type=mime_type)
 
-                    # Create message
-                    attachment_data = st.session_state.get('attachment_data', None)
-                    attachment_name = st.session_state.get('attachment_name', None)
-                    message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment_name if attachment else None, mime_type=mime_type)
+                    #message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment_name if attachment else None, mime_type=mime_type)
 
                     # Send message
                     my_gmail.send_message(service, 'me', message)
