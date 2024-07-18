@@ -53,12 +53,12 @@ def success_box(st):
 )
     
 def attachement_file_type(st, attachment, pdf_viewer, index, pd):
-    if attachment['name'].endswith('.pdf'):
-        pdf_viewer(input=attachment['data'], width=1920, height=1080, key=f"pdf_viewer_{index}")
-    elif attachment['name'].endswith('.csv') or attachment['name'].endswith('.xls') or attachment['name'].endswith('.xlsx'):
-        df_attachment = pd.read_csv(attachment['data'])
+    if attachment.name.endswith('.pdf'):
+        pdf_viewer(input=attachment.getvalue(), width=1920, height=1080, key=f"pdf_viewer_{index}")
+    elif attachment.name.endswith('.csv') or attachment.name.endswith('.xls') or attachment.name.endswith('.xlsx'):
+        df_attachment = pd.read_csv(attachment.getvalue())
         st.dataframe(df_attachment)
-    elif attachment['name'].endswith('.png') or attachment['name'].endswith('.jpg') or attachment['name'].endswith('.jpeg'):
-        st.image(attachment['data'])
+    elif attachment.name.endswith('.png') or attachment.name.endswith('.jpg') or attachment.name.endswith('.jpeg'):
+        st.image(attachment.getvalue())
     else:
-        st.write(attachment['data'])
+        st.write(attachment.getvalue())
