@@ -141,9 +141,9 @@ if 'creds' in st.session_state and st.session_state['creds']:
                         if st.session_state['show_attachment'] == True:
                             utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)                    
                     
-                        with attach_col2:       
-                            if st.button("Hide Attachment", key=f"hide_attachment_{idx}"):
-                                st.session_state['show_attachment'] = False
+                    with attach_col2:       
+                        if st.button("Hide Attachment", key=f"hide_attachment_{idx}"):
+                            st.session_state['show_attachment'] = False
 
         # Create message
         attachment_data = st.session_state.get('attachment_data', None)
