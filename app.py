@@ -22,6 +22,12 @@ if 'email_sent' not in st.session_state:
     st.session_state['email_sent'] = False
 if 'creds' not in st.session_state:
     st.session_state['creds'] = my_gmail.load_credentials()
+if 'custom_subject' not in st.session_state:
+    st.session_state['custom_subject'] = ""
+if 'custom_body' not in st.session_state:
+    st.session_state['custom_body'] = ""
+if 'template_option' not in st.session_state:
+    st.session_state['template_option'] = "Custom"
 
 # Sidebar for login/logout
 if 'creds' in st.session_state and st.session_state['creds']:                    
@@ -137,16 +143,21 @@ if 'creds' in st.session_state and st.session_state['creds']:
                             st.session_state['show_attachment'] = False
 
         # Allow users to select a predefined template or write their own
-        template_option = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"])
+        st.session_state['template_option'] = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"], index=None)
 
-        if template_option and template_option != "Custom":
-            subject_template = templates.PREDEFINED_TEMPLATES[template_option]["subject"]
-            body_template = templates.PREDEFINED_TEMPLATES[template_option]["body"]
+        if st.session_state['template_option'] and st.session_state['template_option'] != "Custom":
+            subject_template = templates.PREDEFINED_TEMPLATES[st.session_state['template_option']]["subject"]
+            body_template = templates.PREDEFINED_TEMPLATES[st.session_state['template_option']]["body"]
+            mime_type = 'html'
             st.text_input("Email Subject Template", value=subject_template, disabled=True)
             st.text_area("Email Body Template", value=body_template, disabled=True)
         else:
-            subject_template = st.text_input("Custom Email Subject", placeholder="Email Subject Goes Here:")
-            body_template = st.text_area("Custom Email Body", placeholder="Email Body Goes Here:")
+            subject_template = st.text_input("Custom Email Subject", value=st.session_state['custom_subject'] or '', placeholder="Email Subject Goes Here:")
+            body_template = st.text_area("Custom Email Body", value=st.session_state['custom_body'] or '', placeholder="Email Body Goes Here:")
+            st.session_state['custom_subject'] = subject_template
+            st.session_state['custom_body'] = body_template
+            mime_type = 'plain'
+
 
         # Preview email
         if st.button('Preview Email'):
@@ -157,8 +168,8 @@ if 'creds' in st.session_state and st.session_state['creds']:
                 body = Template(body_template).substitute(preview_row)
                 
                 st.subheader('Email Preview')
-                st.html(f'Subject: {subject}')
-                st.html(f'Body:\n{body}')
+                st.write(f'Subject: {subject}', unsafe_allow_html=True)
+                st.write(f'Body:\n{body}', unsafe_allow_html=True)
 
         # Send emails
         if st.button('Send Emails'):
@@ -178,7 +189,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
                     # Create message
                     attachment_data = st.session_state.get('attachment_data', None)
                     attachment_name = st.session_state.get('attachment_name', None)
-                    message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment_name if attachment else None)
+                    message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment_name if attachment else None, mime_type=mime_type)
 
                     # Send message
                     my_gmail.send_message(service, 'me', message)

@@ -40,12 +40,12 @@ def refresh_token_if_expired(creds):
         save_credentials(creds)
     return creds
 
-def create_message(sender, to, subject, message_text, attachment_data=None, attachment_name=None):
+def create_message(sender, to, subject, message_text, attachment_data=None, attachment_name=None, mime_type='plain'):
     message = MIMEMultipart()
     message['to'] = to
     message['from'] = sender
     message['subject'] = subject
-    msg = MIMEText(message_text, 'html')
+    msg = MIMEText(message_text, mime_type)
     message.attach(msg)
     if attachment_data and attachment_name:
         part = MIMEBase('application', 'octet-stream')
