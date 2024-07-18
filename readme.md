@@ -5,6 +5,8 @@ Welcome to the 'MailBlast' Github Repository. This project is a Streamlit-based 
 
 # :notebook_with_decorative_cover: Table of Contents
 - [Getting Started](#toolbox-getting-started)
+- [Features](#dart-features)
+- [Use Cases](#compass-use-cases)
 - [Contributing](#wave-contributing)
 - [License](#warning-license)
 
