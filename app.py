@@ -132,18 +132,13 @@ if 'creds' in st.session_state and st.session_state['creds']:
         # attachement
         attachments = st.file_uploader("Upload the Attachment (optional)", type=None, accept_multiple_files=True)
         if attachments:
-            if 'attachments' not in st.session_state:
-                st.session_state['attachments'] = []
-
-            for attachment in attachments:
-                attachment_data = attachment.getvalue()
-                attachment_name = attachment.name
-                st.session_state['attachments'].append({'data': attachment_data, 'name': attachment_name})
+            utils.manage_attachments(st, attachments)
             
             attach_col1, attach_col2 = st.columns(2)
             with attach_col1:
                 if st.button("Show Attachment"):
                     st.session_state['show_attachment'] = True
+                    
                     # for idx, attachment in enumerate(attachments):
                         # st.session_state['attachment_data'] = attachment.getvalue()
                         # st.session_state['attachment_name'] = attachment.name                  
@@ -152,14 +147,11 @@ if 'creds' in st.session_state and st.session_state['creds']:
                         if st.button("Hide Attachment"):
                             st.session_state['show_attachment'] = False
 
-            if st.session_state['show_attachment'] == True:
+            if st.session_state['show_attachment']:
                 for idx, attachment in enumerate(st.session_state['attachments']):
                     st.write(f"Attachment: {attachment['name']}")
-                    utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)  
-
-        # Create message
-        attachment_data = st.session_state.get('attachment_data', None)
-        attachment_name = st.session_state.get('attachment_name', None)
+                    utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)
+ 
 
         # Allow users to select a predefined template or write their own
         st.session_state['template_option'] = st.selectbox("Select an Email Template", list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"], index=None)
