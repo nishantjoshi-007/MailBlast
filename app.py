@@ -167,9 +167,14 @@ if 'creds' in st.session_state and st.session_state['creds']:
                 subject = Template(subject_template).substitute(preview_row)
                 body = Template(body_template).substitute(preview_row)
                 
-                st.subheader('Email Preview')
-                st.write(f'Subject: {subject}', unsafe_allow_html=True)
-                st.write(f'Body:\n{body}', unsafe_allow_html=True)
+                if st.session_state['custom_subject'] == "" or st.session_state['custom_subject'] == None:
+                    st.subheader('Email Preview')
+                    st.html(f'Subject: {subject}')
+                    st.html(f'Body:\n{body} \n Attachments:\n{st.session_state["attachment_name"]}')
+                else:
+                    st.subheader('Email Preview')
+                    st.write(f'Subject: {subject}')
+                    st.write(f'Body:\n{body} \n Attachments:\n{st.session_state["attachment_name"]}')
 
         # Send emails
         if st.button('Send Emails'):
