@@ -37,7 +37,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
         st.sidebar.write(f"Logged in as {user_name} ({user_email})")
     
     #refresh app button
-    if st.sidebar.button("Refresh App"):
+    if st.sidebar.button("Restart App", help="Restarting the app will log you out!"):
         utils.refresh_app(st, 0)
     
     #instructions popup
@@ -94,7 +94,7 @@ else:
             if os.path.exists('token.pickle'):
                 os.remove('token.pickle')
 
-    if st.sidebar.button("Refresh App", help="Refreshing the app will log you out!"):
+    if st.sidebar.button("Restart App", help="Restarting the app will log you out!"):
         utils.refresh_app(st, 0)
 
 # Main app content
