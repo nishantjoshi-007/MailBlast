@@ -30,6 +30,8 @@ if 'template_option' not in st.session_state:
     st.session_state['template_option'] = "Custom"
 if 'attachments' not in st.session_state:
     st.session_state['attachments'] = []
+if 'show_attachment' not in st.session_state:
+    st.session_state['show_attachment'] = None
 
 # Sidebar for login/logout
 if 'creds' in st.session_state and st.session_state['creds']:                    
@@ -141,8 +143,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
             attach_col1, attach_col2 = st.columns(2)
             with attach_col1:
                 if st.button("Show Attachment"):
-                    if 'show_attachment' not in st.session_state:
-                        st.session_state['show_attachment'] = True
+                    st.session_state['show_attachment'] = True
                     # for idx, attachment in enumerate(attachments):
                         # st.session_state['attachment_data'] = attachment.getvalue()
                         # st.session_state['attachment_name'] = attachment.name                  
