@@ -114,7 +114,7 @@ Ready to blast off? 🚀 Log in and start sending those emails with **MailBlast*
 
 
 # Privacy policy and terms of service
-privacy_policy = '''
+privacy_and_terms_policy = '''
 <h2 style='color:springgreen;'>Privacy Policy</h2>
 
 <p style='font-size:1.2rem;'>MailBlast values your privacy and ensures that your data is handled securely. Here's how we manage your information:</p>
@@ -142,9 +142,7 @@ privacy_policy = '''
 <h3 style='color:springgreen;'>Compliance</h3>
 
 <p>MailBlast complies with Google’s API Services User Data Policy, ensuring that all data handling meets the highest privacy and security standards.</p>
-'''
 
-terms_of_service = '''
 <h2 style='color:springgreen;'>Terms of Service</h2>
 
 <p style='font-size:1.2rem;'>By using MailBlast, you agree to the following terms:</p>

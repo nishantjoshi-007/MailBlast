@@ -7,7 +7,7 @@ from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 from string import Template 
 import src.my_gmail as my_gmail, src.templates as templates
-from src.instructions import instructions, home_page_instructions
+from src.instructions import instructions, home_page_instructions, privacy_and_terms_policy
 from src import utils
 from src import popup
 
@@ -28,7 +28,19 @@ if 'template_option' not in st.session_state:
     st.session_state['template_option'] = "Custom"
 
 # Sidebar for login/logout
-if 'creds' in st.session_state and st.session_state['creds']:                    
+if 'creds' in st.session_state and st.session_state['creds']: 
+    
+    # Privacy policy and terms of service popup
+    privacy_popup_col1, privacy_popup_col2 = st.columns(2)
+    with privacy_popup_col1:
+        if st.sidebar.button("Show Privacy Policy & Terms of Service"):
+            popup.show_modal(st)
+            popup.render_modal(st, privacy_and_terms_policy)
+            
+            with privacy_popup_col2:       
+                if st.sidebar.button("Hide Privacy Policy & Terms of Service"):
+                    popup.hide_modal(st)
+                                       
     st.session_state['creds'] = my_gmail.refresh_token_if_expired(st.session_state['creds'])
     user_info = my_gmail.get_user_info(st.session_state['creds'])
     if user_info:
