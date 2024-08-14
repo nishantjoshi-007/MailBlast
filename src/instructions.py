@@ -115,67 +115,43 @@ Ready to blast off? 🚀 Log in and start sending those emails with **MailBlast*
 
 # Privacy policy and terms of service
 privacy_and_terms_policy = '''
+
 <h2 style='color:springgreen;'>Privacy Policy</h2>
 
-<p style='font-size:1.2rem;'>MailBlast values your privacy and ensures that your data is handled securely. Here's how we manage your information:</p>
+<p style='font-size:1.2rem;'>**MailBlast** values your privacy and ensures that your data is handled securely. Here's how we manage your information:</p>
 
-<h3 style='color:springgreen;'>Data Collection</h3>
+1. **Data Collection**: We only access your email content, contact lists, and attachments temporarily during the email-sending process. None of this data is stored on our servers or shared with third parties.
 
-<p>We only access your email content, contact lists, and attachments temporarily during the email-sending process. None of this data is stored on our servers or shared with third parties.</p>
+2. **Google OAuth 2.0**: We use Google’s OAuth 2.0 protocol to securely authenticate and access your Gmail account. Your credentials remain secure, and we do not store or have direct access to your login information.
 
-<h3 style='color:springgreen;'>Google OAuth 2.0</h3>
+3. **Data Security**: All data transferred between MailBlast and Google’s servers is encrypted to ensure your information remains private and secure.
 
-<p>We use Google’s OAuth 2.0 protocol to securely authenticate and access your Gmail account. Your credentials remain secure, and we do not store or have direct access to your login information.</p>
+4. **Data Deletion**: Since we do not store your data, there is no need for data deletion on our part. All emails, drafts, and attachments remain in your Google account, where you have full control.
 
-<h3 style='color:springgreen;'>Data Security</h3>
+5. **Revocation of Access**: You can revoke MailBlast’s access to your Google account at any time through your Google account settings, immediately stopping the app from accessing your data.
 
-<p>All data transferred between MailBlast and Google’s servers is encrypted to ensure your information remains private and secure.</p>
+6. **Compliance**: MailBlast complies with Google’s API Services User Data Policy, ensuring that all data handling meets the highest privacy and security standards.
 
-<h3 style='color:springgreen;'>Data Deletion</h3>
-
-<p>Since we do not store your data, there is no need for data deletion on our part. All emails, drafts, and attachments remain in your Google account, where you have full control.</p>
-
-<h3 style='color:springgreen;'>Revocation of Access</h3>
-
-<p>You can revoke MailBlast’s access to your Google account at any time through your Google account settings, immediately stopping the app from accessing your data.</p>
-
-<h3 style='color:springgreen;'>Compliance</h3>
-
-<p>MailBlast complies with Google’s API Services User Data Policy, ensuring that all data handling meets the highest privacy and security standards.</p>
 
 <h2 style='color:springgreen;'>Terms of Service</h2>
 
-<p style='font-size:1.2rem;'>By using MailBlast, you agree to the following terms:</p>
+<p style='font-size:1.2rem;'>**MailBlast** is designed to provide a simple and efficient way to send personalized mass emails using your Google account. By using MailBlast, you agree to the following terms:</p>
 
-<h3 style='color:springgreen;'>User Responsibility</h3>
+1. **User Responsibility**: You are responsible for the content of the emails you send, including ensuring that all information is accurate and complies with applicable laws. MailBlast is not liable for any issues arising from incorrect or unlawful content.
 
-<p>You are responsible for ensuring the accuracy and legality of all information provided, including contact lists and email content. MailBlast is not liable for any issues arising from incorrect or unlawful content.</p>
+2. **Service Scope**: MailBlast enables you to send emails, manage drafts, and attach files using Google’s Gmail API. The service is dependent on Google’s API, and any changes or limitations imposed by Google may affect MailBlast's functionality.
 
-<h3 style='color:springgreen;'>Service Scope</h3>
+3. **Account Security**: MailBlast uses Google’s OAuth 2.0 for secure authentication, but you are responsible for maintaining the security of your Google account. We are not liable for any unauthorized access due to compromised user credentials.
 
-<p>MailBlast enables you to send emails, manage drafts, and attach files using Google’s Gmail API. The service is dependent on Google’s API, and any changes or limitations imposed by Google may affect MailBlast's functionality.</p>
+4. **Email Sending Limits**: Gmail imposes limits on the number of emails you can send per day. If you exceed these limits, your account may be temporarily or permanently suspended by Google. **MailBlast is not responsible for any account bans or suspensions due to excessive email sending.**
 
-<h3 style='color:springgreen;'>Account Security</h3>
+5. **Limitation of Liability**: MailBlast is provided "as is" without any warranties, express or implied. We do not guarantee the continuous or error-free operation of the service. MailBlast is not liable for any indirect, incidental, or consequential damages arising from your use of the service.
 
-<p>MailBlast uses Google’s OAuth 2.0 for secure authentication, but you are responsible for maintaining the security of your Google account. We are not liable for any unauthorized access due to compromised user credentials.</p>
+6. **Service Modifications**: We reserve the right to modify, suspend, or discontinue the service at any time, with or without notice. We may also update these terms as necessary, and continued use of the service signifies your acceptance of any changes.
 
-<h3 style='color:springgreen;'>Email Sending Limits</h3>
+7. **Compliance with Laws**: You agree to use MailBlast in compliance with all applicable laws and regulations, including those related to email marketing, data protection, and privacy.
 
-<p>Gmail imposes limits on the number of emails you can send per day. If you exceed these limits, your account may be temporarily or permanently suspended by Google. MailBlast is not responsible for any account bans or suspensions due to excessive email sending.</p>
+8. **Termination**: We reserve the right to terminate or restrict your access to MailBlast at our discretion, particularly if you violate these terms or misuse the service.
 
-<h3 style='color:springgreen;'>Limitation of Liability</h3>
-
-<p>MailBlast is provided "as is" without any warranties, express or implied. We do not guarantee the continuous or error-free operation of the service. MailBlast is not liable for any indirect, incidental, or consequential damages arising from your use of the service.</p>
-
-<h3 style='color:springgreen;'>Service Modifications</h3>
-
-<p>We reserve the right to modify, suspend, or discontinue the service at any time, with or without notice. We may also update these terms as necessary, and continued use of the service signifies your acceptance of any changes.</p>
-
-<h3 style='color:springgreen;'>Compliance with Laws</h3>
-
-<p>You agree to use MailBlast in compliance with all applicable laws and regulations, including those related to email marketing, data protection, and privacy.</p>
-
-<h3 style='color:springgreen;'>Termination</h3>
-
-<p>We reserve the right to terminate or restrict your access to MailBlast at our discretion, particularly if you violate these terms or misuse the service.</p>
+<p style='font-size:1.2rem;'>By using MailBlast, you acknowledge and accept these terms, including your responsibility for maintaining compliance with Gmail's email sending limits and securing your Google account.</p>
 '''
