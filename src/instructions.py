@@ -118,7 +118,7 @@ privacy_and_terms_policy = '''
 
 <h2 style='color:springgreen;'>Privacy Policy</h2>
 
-<p style='font-size:1.2rem;'>**MailBlast** values your privacy and ensures that your data is handled securely. Here's how we manage your information:</p>
+<p style='font-size:1.2rem;'><strong>MailBlast</strong> values your privacy and ensures that your data is handled securely. Here's how we manage your information:</p>
 
 1. **Data Collection**: We only access your email content, contact lists, and attachments temporarily during the email-sending process. None of this data is stored on our servers or shared with third parties.
 
@@ -135,7 +135,7 @@ privacy_and_terms_policy = '''
 
 <h2 style='color:springgreen;'>Terms of Service</h2>
 
-<p style='font-size:1.2rem;'>**MailBlast** is designed to provide a simple and efficient way to send personalized mass emails using your Google account. By using MailBlast, you agree to the following terms:</p>
+<p style='font-size:1.2rem;'><strong>MailBlast</strong> is designed to provide a simple and efficient way to send personalized mass emails using your Google account. By using MailBlast, you agree to the following terms:</p>
 
 1. **User Responsibility**: You are responsible for the content of the emails you send, including ensuring that all information is accurate and complies with applicable laws. MailBlast is not liable for any issues arising from incorrect or unlawful content.
 
