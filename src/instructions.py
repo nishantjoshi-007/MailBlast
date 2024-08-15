@@ -114,7 +114,7 @@ Ready to blast off? 🚀 Log in and start sending those emails with **MailBlast*
 
 
 # Privacy policy and terms of service
-privacy_and_terms_policy = '''
+privacy_policy = '''
 
 <h2 style='color:springgreen;'>Privacy Policy</h2>
 
@@ -131,7 +131,9 @@ privacy_and_terms_policy = '''
 5. **Revocation of Access**: You can revoke MailBlast’s access to your Google account at any time through your Google account settings, immediately stopping the app from accessing your data.
 
 6. **Compliance**: MailBlast complies with Google’s API Services User Data Policy, ensuring that all data handling meets the highest privacy and security standards.
+'''
 
+terms_of_service = '''
 
 <h2 style='color:springgreen;'>Terms of Service</h2>
 

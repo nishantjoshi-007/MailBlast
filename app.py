@@ -7,7 +7,7 @@ from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 from string import Template 
 import src.my_gmail as my_gmail, src.templates as templates
-from src.instructions import instructions, home_page_instructions, privacy_and_terms_policy
+from src.instructions import instructions, home_page_instructions, privacy_policy, terms_of_service
 from src import utils
 from src import popup
 
@@ -31,15 +31,29 @@ if 'template_option' not in st.session_state:
 if 'creds' in st.session_state and st.session_state['creds']: 
     
     # Privacy policy and terms of service popup
-    privacy_popup_col1, privacy_popup_col2 = st.columns(2)
-    with privacy_popup_col1:
-        if st.sidebar.button("Show Privacy Policy & Terms of Service"):
-            popup.show_modal(st)
-            popup.render_modal(st, privacy_and_terms_policy)
-            
-            with privacy_popup_col2:       
-                if st.sidebar.button("Hide Privacy Policy & Terms of Service"):
-                    popup.hide_modal(st)
+    tos_popup, privacy_popup = st.columns(2)
+    
+    with tos_popup:
+        terms_of_service_open, terms_of_service_close = st.columns(2)
+        with terms_of_service_open:
+            if st.sidebar.button("Show Terms of Service"):
+                popup.show_modal(st)
+                popup.render_modal(st, terms_of_service)
+                
+                with terms_of_service_close:       
+                    if st.sidebar.button("Hide Terms of Service"):
+                        popup.hide_modal(st)
+    
+    with privacy_popup:
+        privacy_policy_open, privacy_policy_close = st.columns(2)
+        with privacy_policy_open:
+            if st.sidebar.button("Show Privacy Policy"):
+                popup.show_modal(st)
+                popup.render_modal(st, privacy_policy)
+                
+                with privacy_policy_close:       
+                    if st.sidebar.button("Hide Privacy Policy"):
+                        popup.hide_modal(st)
                                        
     st.session_state['creds'] = my_gmail.refresh_token_if_expired(st.session_state['creds'])
     user_info = my_gmail.get_user_info(st.session_state['creds'])
@@ -74,7 +88,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
             os.remove('token.pickle')
         st.experimental_rerun()
 
-else:
+else:                   
     if st.sidebar.button("Login with Google", type='primary'):
         flow = my_gmail.get_flow()
         flow.redirect_uri = my_gmail.REDIRECT_URI
@@ -224,4 +238,29 @@ if 'creds' in st.session_state and st.session_state['creds']:
 
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
-    utils.download_sample_csv(st) 
+    utils.download_sample_csv(st)
+    
+    # Privacy policy and terms of service popup
+    tos_popup, privacy_popup = st.columns(2)
+    
+    with tos_popup:
+        terms_of_service_open, terms_of_service_close = st.columns(2)
+        with terms_of_service_open:
+            if st.sidebar.button("Show Terms of Service"):
+                popup.show_modal(st)
+                popup.render_modal(st, terms_of_service)
+                
+                with terms_of_service_close:       
+                    if st.sidebar.button("Hide Terms of Service"):
+                        popup.hide_modal(st)
+    
+    with privacy_popup:
+        privacy_policy_open, privacy_policy_close = st.columns(2)
+        with privacy_policy_open:
+            if st.sidebar.button("Show Privacy Policy"):
+                popup.show_modal(st)
+                popup.render_modal(st, privacy_policy)
+                
+                with privacy_policy_close:       
+                    if st.sidebar.button("Hide Privacy Policy"):
+                        popup.hide_modal(st)
