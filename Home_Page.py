@@ -7,12 +7,11 @@ from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 from string import Template 
 import src.my_gmail as my_gmail, src.templates as templates
-from src.instructions import instructions, home_page_instructions, privacy_policy, terms_of_service
+from src.instructions import instructions, home_page_instructions
 from src import utils
 from src import popup
-import streamlit.components.v1 as components
 
-st.set_page_config("MailBlast", "./static/logo.png")
+st.set_page_config("MailBlast - Home Page", "./static/logo.png")
 
 utils.hide_warning(st)
 
@@ -30,31 +29,6 @@ if 'template_option' not in st.session_state:
 
 # Sidebar for login/logout
 if 'creds' in st.session_state and st.session_state['creds']: 
-    
-    # Privacy policy and terms of service popup
-    tos_popup, privacy_popup = st.columns(2)
-    
-    with tos_popup:
-        terms_of_service_open, terms_of_service_close = st.columns(2)
-        with terms_of_service_open:
-            if st.sidebar.button("Show Terms of Service"):
-                popup.show_modal(st)
-                popup.render_modal(st, terms_of_service)
-                
-                with terms_of_service_close:       
-                    if st.sidebar.button("Hide Terms of Service"):
-                        popup.hide_modal(st)
-    
-    with privacy_popup:
-        privacy_policy_open, privacy_policy_close = st.columns(2)
-        with privacy_policy_open:
-            if st.sidebar.button("Show Privacy Policy"):
-                popup.show_modal(st)
-                popup.render_modal(st, privacy_policy)
-                
-                with privacy_policy_close:       
-                    if st.sidebar.button("Hide Privacy Policy"):
-                        popup.hide_modal(st)
                                        
     st.session_state['creds'] = my_gmail.refresh_token_if_expired(st.session_state['creds'])
     user_info = my_gmail.get_user_info(st.session_state['creds'])
@@ -240,28 +214,3 @@ if 'creds' in st.session_state and st.session_state['creds']:
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)
     utils.download_sample_csv(st)
-    
-    # Privacy policy and terms of service popup
-    tos_popup, privacy_popup = st.columns(2)
-    
-    with tos_popup:
-        terms_of_service_open, terms_of_service_close = st.columns(2)
-        with terms_of_service_open:
-            if st.sidebar.button("Show Terms of Service"):
-                popup.show_modal(st)
-                popup.render_modal(st, terms_of_service)
-                
-                with terms_of_service_close:       
-                    if st.sidebar.button("Hide Terms of Service"):
-                        popup.hide_modal(st)
-    
-    with privacy_popup:
-        privacy_policy_open, privacy_policy_close = st.columns(2)
-        with privacy_policy_open:
-            if st.sidebar.button("Show Privacy Policy"):
-                popup.show_modal(st)
-                popup.render_modal(st, privacy_policy)
-                
-                with privacy_policy_close:       
-                    if st.sidebar.button("Hide Privacy Policy"):
-                        popup.hide_modal(st)
