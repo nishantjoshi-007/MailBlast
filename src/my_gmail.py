@@ -8,10 +8,13 @@ from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.auth.transport.requests import Request
-import pickle, base64
+import base64
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Allow OAuth over HTTP for local development
-# os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 # Configuration
 REDIRECT_URI = os.getenv('redirect_uris')

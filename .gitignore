@@ -1,4 +1,5 @@
 client_secret.json
+client_secret_localhost.json
 .env
 
 venv/

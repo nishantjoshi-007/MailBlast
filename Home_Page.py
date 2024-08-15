@@ -61,7 +61,7 @@ if 'creds' in st.session_state and st.session_state['creds']:
         st.session_state.clear()
         if os.path.exists('token.pickle'):
             os.remove('token.pickle')
-        st.experimental_rerun()
+        st.rerun()
 
 else:                   
     if st.sidebar.button("Login with Google", type='primary'):
@@ -88,7 +88,7 @@ else:
             creds = flow.credentials
             my_gmail.save_credentials(creds)
             st.experimental_set_query_params()  # Clear query parameters
-            st.experimental_rerun()
+            st.rerun()
         except Exception as e:
             st.error(f"An error occurred during authentication: {e}")
             st.session_state.clear()
