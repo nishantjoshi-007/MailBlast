@@ -15,6 +15,15 @@ st.set_page_config("MailBlast", "./static/logo.png")
 
 utils.hide_warning(st)
 
+# Serving the HTML verification file
+@st.cache_resource
+def serve_google_verification():
+    # Check if the HTML file exists
+    if os.path.exists("googlec3d55dba88119f63.html"):
+        st.markdown("<a href='/googlec3d55dba88119f63.html' target='_blank'>Verify with Google</a>", unsafe_allow_html=True)
+
+serve_google_verification()
+
 # Initialize session state variables
 if 'state' not in st.session_state:
     st.session_state['state'] = None
