@@ -16,11 +16,6 @@ st.set_page_config("MailBlast", "./static/logo.png")
 
 utils.hide_warning(st)
 
-# Inject the meta tag into the head section
-components.html("""
-<meta name="google-site-verification" content="nbdO-8bnIHH2wngXZ53EYi1HStCCoUpQlWjT7NP4RuA" />
-""", height=0)
-
 # Initialize session state variables
 if 'state' not in st.session_state:
     st.session_state['state'] = None
