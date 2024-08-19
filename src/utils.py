@@ -12,8 +12,8 @@ def hide_warning(st):
 
 # Function to add privacy-policy link to satisfy google console req
 def policy_url_show(st):
-    st.markdown('<a href="pages/Privacy_Policy.py" style="display:none;">Privacy Policy</a>', unsafe_allow_html=True)
-    st.markdown('<a href="pages/Terms_of_Service.py" style="display:none;">Terms of Service</a>', unsafe_allow_html=True)
+    st.markdown('<a href="https://mailblast.nishantjoshi.me/Privacy_Policy" style="display:none;">Privacy Policy</a>', unsafe_allow_html=True)
+    st.markdown('<a href="https://mailblast.nishantjoshi.me/Terms_of_Service" style="display:none;">Terms of Service</a>', unsafe_allow_html=True)
 
 # Function to refresh the app
 def refresh_app(st, delay):
