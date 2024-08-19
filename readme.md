@@ -35,7 +35,7 @@ Welcome to the 'MailBlast' Github Repository. This project is a Streamlit-based 
 
 4. **Run the Application**
    ```bash
-   streamlit run app.py
+   streamlit run Home_Page.py
    ```
 
 ## :dart: Features

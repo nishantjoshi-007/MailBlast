@@ -14,6 +14,7 @@ from src import popup
 st.set_page_config("MailBlast - Home Page", "./static/logo.png")
 
 utils.hide_warning(st)
+utils.policy_url_show(st)
 
 # Initialize session state variables
 if 'state' not in st.session_state:
