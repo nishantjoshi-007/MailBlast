@@ -14,10 +14,10 @@ instructions = '''
 3. **Click on "Upload File"** to select your file.
 4. **Preview your data** to ensure everything looks good.
 
-<h3 style='color:springgreen;'>📄 Step 3: Upload Your Resume (Optional)</h3>
+<h3 style='color:springgreen;'>📄 Step 3: Upload Attachments (Optional)</h3>
 
-1. **Click on "Upload Resume"** to attach a PDF resume to your emails.
-2. **Preview your resume** to make sure it's the right one.
+1. **Click on "Upload the Attachment(s)"** to attach any kind of attachment(s) to your emails.
+2. **Preview your Attachment(s)** to make sure it's the right one.
 
 <h3 style='color:springgreen;'>✉️ Step 4: Customize Your Email</h3>
 
@@ -44,7 +44,7 @@ instructions = '''
 - **Effortless Mass Emailing**: Send multiple personalized emails with just a few clicks.
 - **Seamless Google Integration**: Securely log in and send emails using your Google account.
 - **Customizable Templates**: Use pre-defined templates or create your own for a personal touch.
-- **PDF Attachments**: Easily attach resumes or other documents to your emails.
+- **File Attachments**: Easily attach any document(s) to your emails.
 
 <h3 style='color:springgreen;'>🔒 Your Data is Secure</h3>
 
@@ -69,10 +69,10 @@ home_page_instructions = '''
 3. **Click on "Upload File"** to select your file.
 4. **Preview your data** to ensure everything looks good.
 
-### 📄 Step 3: Upload Your Resume (Optional)
+###📄 Step 3: Upload Attachments (Optional)
 
-1. **Click on "Upload Resume"** to attach a PDF resume to your emails.
-2. **Preview your resume** to make sure it's the right one.
+1. **Click on "Upload the Attachment(s)"** to attach any kind of attachment(s) to your emails.
+2. **Preview your Attachment(s)** to make sure it's the right one.
 
 ### ✉️ Step 4: Customize Your Email
 
@@ -99,7 +99,7 @@ home_page_instructions = '''
 - **Effortless Mass Emailing**: Send multiple personalized emails with just a few clicks.
 - **Seamless Google Integration**: Securely log in and send emails using your Google account.
 - **Customizable Templates**: Use pre-defined templates or create your own for a personal touch.
-- **PDF Attachments**: Easily attach resumes or other documents to your emails.
+- **File Attachments**: Easily attach any document(s) to your emails.
 
 ### 🔒 Your Data is Secure
 
