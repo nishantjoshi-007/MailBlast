@@ -69,7 +69,7 @@ home_page_instructions = '''
 3. **Click on "Upload File"** to select your file.
 4. **Preview your data** to ensure everything looks good.
 
-###📄 Step 3: Upload Attachments (Optional)
+### 📄 Step 3: Upload Attachments (Optional)
 
 1. **Click on "Upload the Attachment(s)"** to attach any kind of attachment(s) to your emails.
 2. **Preview your Attachment(s)** to make sure it's the right one.
