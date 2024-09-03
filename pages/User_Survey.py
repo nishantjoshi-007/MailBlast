@@ -2,7 +2,6 @@ import streamlit as st
 import requests, os
 from dotenv import load_dotenv
 from src import utils
-import streamlit_survey as ss
 
 
 st.set_page_config("MailBlast - Privacy Policy", "static/logo.png")
