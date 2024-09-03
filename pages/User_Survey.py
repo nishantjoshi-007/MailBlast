@@ -6,9 +6,9 @@ from src import utils
 
 st.set_page_config("MailBlast - Privacy Policy", "static/logo.png")
 
-st.info("We'd love your feedback! Please take a moment to complete the survey.")
-
 st.title("MailBlast User Survey")
+
+st.info("We'd love your feedback! Please take a moment to complete the survey.")
 
 
 with st.expander("MailBlast User Survey", expanded=True):
