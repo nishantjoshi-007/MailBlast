@@ -1,5 +1,5 @@
-instructions = '''
-<p style='font-size:1.2rem;'>MailBlast makes it super easy to send personalized emails to multiple recipients at once! Follow these simple steps to get started and become an email-sending superstar! 🌟</p>
+instructions = """
+<p style='font-size:1.2rem; margin-top: 1.5rem;'>MailBlast makes it super easy to send personalized emails to multiple recipients at once! Follow these simple steps to get started and become an email-sending superstar! 🌟</p>
 
 <h3 style='color:springgreen;'>📋 Step 1: Log In with Google</h3>
 
@@ -50,10 +50,10 @@ instructions = '''
 
 We prioritize your privacy and security. Your data is never shared, and all operations are performed securely.
 
-'''
+"""
 
 
-home_page_instructions = '''
+home_page_instructions = """
 <p style='font-size:1.2rem;'>MailBlast makes it super easy to send personalized emails to multiple recipients at once! Follow these simple steps to get started and become an email-sending superstar! 🌟</p>
 
 ### 📋 Step 1: Log In with Google
@@ -109,4 +109,4 @@ We prioritize your privacy and security. Your data is never shared, and all oper
 
 Ready to blast off? 🚀 Log in and start sending those emails with **MailBlast** today!
 
-'''
+"""

@@ -127,7 +127,7 @@ if "creds" in st.session_state and st.session_state["creds"]:
         else:
             df = pd.read_excel(file_uploaded)
 
-        st.dataframe(df)
+        st.data_editor(df)
 
         attachments = st.file_uploader(
             "Upload the Attachment(s) (optional)", type=None, accept_multiple_files=True

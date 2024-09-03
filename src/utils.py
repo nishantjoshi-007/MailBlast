@@ -101,7 +101,7 @@ def attachement_file_type(st, attachment, pdf_viewer, index, pd):
             df_attachment = pd.read_csv(attachment)
         else:
             df_attachment = pd.read_excel(attachment)
-        st.dataframe(df_attachment)
+        st.data_editor(df_attachment)
     elif attachment.name.lower().endswith((".png", ".jpg", ".jpeg")):
         st.image(attachment.getvalue())
     else:
