@@ -22,7 +22,7 @@ instructions = """
 <h3 style='color:springgreen;'>✉️ Step 4: Customize Your Email</h3>
 
 1. **Choose a pre-defined template** or write your own custom email.
-   - For **custom templates**, declare placeholders like this: `${user_name}`. As long as the placeholder matches the column header, it will work and the template will pick up the data automatically.
+   - For **custom templates**, declare placeholders like this: `${field_name}`. As long as the placeholder matches the column header, it will work and the template will pick up the data automatically.
 2. **Download the sample CSV file** for predefined templates to see the naming conventions used. Replace the sample data with your own while keeping the column names the same.
 3. **Fill in the placeholders** with your details and job information.
 4. **Preview your email** to see how it looks for your recipients.
@@ -77,7 +77,7 @@ home_page_instructions = """
 ### ✉️ Step 4: Customize Your Email
 
 1. **Choose a pre-defined template** or write your own custom email.
-   - For **custom templates**, declare placeholders like this: `${user_name}`. As long as the placeholder matches the column header, it will work and the template will pick up the data automatically.
+   - For **custom templates**, declare placeholders like this: `${field_name}`. As long as the placeholder matches the column header, it will work and the template will pick up the data automatically.
 2. **Download the sample CSV file** for predefined templates to see the naming conventions used. Replace the sample data with your own while keeping the column names the same.
 3. **Fill in the placeholders** with your details and job information.
 4. **Preview your email** to see how it looks for your recipients.
