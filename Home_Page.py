@@ -29,9 +29,7 @@ if "template_option" not in st.session_state:
 # Sidebar for login/logout
 if "creds" in st.session_state and st.session_state["creds"]:
 
-    st.session_state["creds"] = my_gmail.refresh_token_if_expired(
-        st.session_state["creds"]
-    )
+    st.session_state["creds"] = my_gmail.refresh_token_if_expired(st.session_state["creds"])
     user_info = my_gmail.get_user_info(st.session_state["creds"])
     if user_info:
         user_email = user_info.get("email")
@@ -69,9 +67,7 @@ else:
         flow = my_gmail.get_flow()
         flow.redirect_uri = my_gmail.REDIRECT_URI
 
-        authorization_url, state = flow.authorization_url(
-            access_type="offline", include_granted_scopes="true"
-        )
+        authorization_url, state = flow.authorization_url(access_type="offline", include_granted_scopes="true")
 
         st.session_state["state"] = state
         st.write(
@@ -113,170 +109,153 @@ if "creds" in st.session_state and st.session_state["creds"]:
         st.write(f"Welcome to MailBlast, {user_name} ({user_email})")
 
     # Handle file upload
-    uploaded_file = st.file_uploader(
-        "Please upload the Excel/csv file.", type=["csv", "xls", "xlsx"]
-    )
-    if uploaded_file is not None:
-        st.session_state.file_uploaded = uploaded_file
+    uploaded_file = st.file_uploader("Please upload the Excel/csv file.", type=["csv", "xls", "xlsx"])
+    st.session_state.file_uploaded = uploaded_file
 
-    # Display the dataframe if a file is uploaded
+    # Display the DataFrame if a file is uploaded
     if "file_uploaded" in st.session_state:
         file_uploaded = st.session_state.file_uploaded
-        if file_uploaded.name.endswith("csv"):
-            df = pd.read_csv(file_uploaded)
-        else:
-            df = pd.read_excel(file_uploaded)
 
-        st.data_editor(df)
+        if file_uploaded is not None:
+            if file_uploaded.name.endswith("csv"):
+                try:
+                    df = pd.read_csv(file_uploaded)
+                except pd.errors.EmptyDataError:
+                    st.warning("The uploaded file is empty. Please upload a valid CSV/Excel file.")
+                    df = pd.DataFrame()
+            else:
+                try:
+                    df = pd.read_excel(file_uploaded)
+                except ValueError:
+                    st.warning("The uploaded file is empty or not a valid Excel file. Please upload a valid file.")
+                    df = pd.DataFrame()
 
-        attachments = st.file_uploader(
-            "Upload the Attachment(s) (optional)", type=None, accept_multiple_files=True
-        )
-        if (
-            "attachments" not in st.session_state
-            or st.session_state["attachments"] != attachments
-        ):
-            st.session_state["attachments"] = attachments
+            # Check if the DataFrame is empty
+            if df.empty:
+                st.warning("Please attach a CSV/Excel file to proceed further.")
+            else:
+                # Show editable data editor
+                edited_df = st.data_editor(df)
 
-        if "show_attachments" not in st.session_state:
-            st.session_state["show_attachments"] = False
+                # Update session state with the edited DataFrame
+                st.session_state["edited_df"] = edited_df
 
-        if st.session_state["attachments"]:
-            attach_col1, attach_col2 = st.columns(2)
-            with attach_col1:
-                if st.button("Show Attachments"):
-                    st.session_state["show_attachments"] = True
+                attachments = st.file_uploader(
+                    "Upload the Attachment(s) (optional)", type=None, accept_multiple_files=True
+                )
+                if "attachments" not in st.session_state or st.session_state["attachments"] != attachments:
+                    st.session_state["attachments"] = attachments
 
-            with attach_col2:
-                if st.button("Hide Attachments"):
+                if "show_attachments" not in st.session_state:
                     st.session_state["show_attachments"] = False
 
-            if st.session_state["show_attachments"]:
-                for idx, attachment in enumerate(st.session_state["attachments"]):
-                    st.write(f"Attachment {idx+1}: {attachment.name}")
-                    utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)
-                    st.divider()
+                if st.session_state["attachments"]:
+                    attach_col1, attach_col2 = st.columns(2)
+                    with attach_col1:
+                        if st.button("Show Attachments"):
+                            st.session_state["show_attachments"] = True
 
-        # Allow users to select a predefined template or write their own
-        st.session_state["template_option"] = st.selectbox(
-            "Select an Email Template",
-            list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"],
-            index=None,
-        )
+                    with attach_col2:
+                        if st.button("Hide Attachments"):
+                            st.session_state["show_attachments"] = False
 
-        if (
-            st.session_state["template_option"]
-            and st.session_state["template_option"] != "Custom"
-        ):
-            subject_template = templates.PREDEFINED_TEMPLATES[
-                st.session_state["template_option"]
-            ]["subject"]
-            body_template = templates.PREDEFINED_TEMPLATES[
-                st.session_state["template_option"]
-            ]["body"]
-            mime_type = "html"
-            st.text_input(
-                "Email Subject Template", value=subject_template, disabled=True
-            )
-            st.text_area("Email Body Template", value=body_template, disabled=True)
-        else:
-            subject_template = st.text_input(
-                "Custom Email Subject",
-                value=st.session_state["custom_subject"] or "",
-                placeholder="Email Subject Goes Here:",
-            )
-            body_template = st.text_area(
-                "Custom Email Body",
-                value=st.session_state["custom_body"] or "",
-                placeholder="Email Body Goes Here:",
-            )
-            st.session_state["custom_subject"] = subject_template
-            st.session_state["custom_body"] = body_template
-            mime_type = "plain"
+                    if st.session_state["show_attachments"]:
+                        for idx, attachment in enumerate(st.session_state["attachments"]):
+                            st.write(f"Attachment {idx+1}: {attachment.name}")
+                            utils.attachement_file_type(st, attachment, pdf_viewer, idx, pd)
+                            st.divider()
 
-        # Preview email
-        if st.button("Preview Email"):
-            if len(df) > 0:
-                preview_row = df.iloc[0].to_dict()
-                preview_row["user_name"] = user_name
-                subject = Template(subject_template).substitute(preview_row)
-                body = Template(body_template).substitute(preview_row)
+                # Allow users to select a predefined template or write their own
+                st.session_state["template_option"] = st.selectbox(
+                    "Select an Email Template",
+                    list(templates.PREDEFINED_TEMPLATES.keys()) + ["Custom"],
+                    index=4,
+                )
 
-                if (
-                    "attachments" in st.session_state
-                    and st.session_state["attachments"]
-                ):
-                    attachment_names = "\n\nAttachments:\n" + "\n".join(
-                        [
-                            attachment.name
-                            for attachment in st.session_state["attachments"]
-                        ]
-                    )
-                    body += attachment_names
-
-                if (
-                    st.session_state["custom_subject"] == ""
-                    or st.session_state["custom_subject"] == None
-                ):
-                    st.subheader("Email Preview")
-                    st.html(f"Subject: {subject}")
-                    st.html(f"Body:\n{body}")
+                if st.session_state["template_option"] and st.session_state["template_option"] != "Custom":
+                    subject_template = templates.PREDEFINED_TEMPLATES[st.session_state["template_option"]]["subject"]
+                    body_template = templates.PREDEFINED_TEMPLATES[st.session_state["template_option"]]["body"]
+                    mime_type = "html"
+                    st.text_input("Email Subject Template", value=subject_template, disabled=True)
+                    st.text_area("Email Body Template", value=body_template, disabled=True)
                 else:
-                    st.subheader("Email Preview")
-                    st.write(f"Subject: {subject}")
-                    st.write(f"Body:\n{body}")
-
-        # Send emails
-        if st.button("Send Emails"):
-            with st.spinner("Sending emails..."):
-                service = build("gmail", "v1", credentials=st.session_state["creds"])
-                for index, row in df.iterrows():
-                    row_dict = row.to_dict()
-                    row_dict["user_name"] = user_name
-                    # Replace placeholders with actual data
-                    subject = Template(subject_template).substitute(row_dict)
-                    body = Template(body_template).substitute(row_dict)
-
-                    # Validate email address
-                    validate_email(row["recipient_email"])
-
-                    # Collect attachments
-                    attachments_email = [
-                        {"data": attachment.getvalue(), "name": attachment.name}
-                        for attachment in st.session_state["attachments"]
-                    ]
-
-                    message = my_gmail.create_message(
-                        user_email,
-                        row["recipient_email"],
-                        subject,
-                        body,
-                        attachments_email,
-                        mime_type=mime_type,
+                    subject_template = st.text_input(
+                        "Custom Email Subject",
+                        value=st.session_state["custom_subject"] or "",
+                        placeholder="Email Subject Goes Here:",
                     )
-                    # message = my_gmail.create_message(user_email, row['recipient_email'], subject, body, attachment_data, attachment_name if attachment else None, mime_type=mime_type)
+                    body_template = st.text_area(
+                        "Custom Email Body",
+                        value=st.session_state["custom_body"] or "",
+                        placeholder="Email Body Goes Here:",
+                    )
+                    st.session_state["custom_subject"] = subject_template
+                    st.session_state["custom_body"] = body_template
+                    mime_type = "plain"
 
-                    # Send message
-                    my_gmail.send_message(service, "me", message)
+                # Preview email
+                if st.button("Preview Email"):
+                    if len(st.session_state["edited_df"]) > 0:
+                        preview_row = st.session_state["edited_df"].iloc[0].to_dict()
+                        preview_row["user_name"] = user_name
+                        subject = Template(subject_template).substitute(preview_row)
+                        body = Template(body_template).substitute(preview_row)
 
-                # success message
-                time.sleep(3)
-                utils.success_box(st, "Hooray, Emails are sent successfully!")
+                        if "attachments" in st.session_state and st.session_state["attachments"]:
+                            attachment_names = "\n\nAttachments:\n" + "\n".join(
+                                [attachment.name for attachment in st.session_state["attachments"]]
+                            )
+                            body += attachment_names
 
-                time.sleep(3)
+                        st.subheader("Email Preview")
+                        st.write(f"Subject: {subject}")
+                        st.write(f"Body:\n{body}")
 
-                # Clear session state for file and DataFrame before switching
-                if "file_uploaded" in st.session_state:
-                    del st.session_state["file_uploaded"]
-                if "attachments" in st.session_state:
-                    del st.session_state["attachments"]
+                # Send emails
+                if st.button("Send Emails"):
+                    with st.spinner("Sending emails..."):
+                        service = build("gmail", "v1", credentials=st.session_state["creds"])
+                        for index, row in st.session_state["edited_df"].iterrows():
+                            row_dict = row.to_dict()
+                            row_dict["user_name"] = user_name
+                            # Replace placeholders with actual data
+                            subject = Template(subject_template).substitute(row_dict)
+                            body = Template(body_template).substitute(row_dict)
 
-                # Clear the DataFrame if it exists
-                if "file_uploaded" in st.session_state:
-                    del st.session_state["file_uploaded"]
+                            # Validate email address
+                            validate_email(row["recipient_email"])
 
-                st.switch_page("pages/User_Survey.py")
+                            # Collect attachments
+                            attachments_email = [
+                                {"data": attachment.getvalue(), "name": attachment.name}
+                                for attachment in st.session_state["attachments"]
+                            ]
 
+                            message = my_gmail.create_message(
+                                user_email,
+                                row["recipient_email"],
+                                subject,
+                                body,
+                                attachments_email,
+                                mime_type=mime_type,
+                            )
+
+                            # Send message
+                            my_gmail.send_message(service, "me", message)
+
+                        # success message
+                        time.sleep(3)
+                        utils.success_box(st, "Hooray, Emails are sent successfully!")
+
+                        time.sleep(3)
+
+                        # Clear session state for file and DataFrame before switching
+                        if "file_uploaded" in st.session_state:
+                            del st.session_state["file_uploaded"]
+                        if "attachments" in st.session_state:
+                            del st.session_state["attachments"]
+
+                        st.switch_page("pages/User_Survey.py")
 
 else:
     st.write(home_page_instructions, unsafe_allow_html=True)

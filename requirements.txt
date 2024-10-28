@@ -53,6 +53,7 @@ rpds-py==0.20.0
 rsa==4.9
 six==1.16.0
 smmap==5.0.1
+st-star-rating==0.0.6
 streamlit==1.37.1
 streamlit-pdf-viewer==0.0.16
 tenacity==8.5.0
