@@ -109,4 +109,28 @@ PREDEFINED_TEMPLATES = {
         <p>Best,<br>${user_name}</p>
         """
     },
+        "CDS Special": {
+        "subject": "NJIT Spring 2025 Career Fair - Last Chance to Register",
+        "body": """   
+            Hello ${Fname},
+
+            Career Development Services at NJIT invites you to attend our <a href="https://www.njit.edu/careerservices/njit-career-fairs">Spring 2025 Career Fair</a> to be held on <strong>Tuesday, February 18th from 11:30 AM - 4:00 PM.</strong>
+
+            Attend to connect face-to-face with top STEM talent from <a href="https://www.njit.edu/">NJIT</a>, one of the nation's leading public polytechnic universities, designated as an <a href="https://news.njit.edu/njit-reaffirmed-elite-research-university-retains-r1-classification">R1 Research University</a> and <a href="https://news.njit.edu/njit-earns-hispanic-serving-status-us-dept-education">Minority-Serving Institution</a>, and recently named <a href="https://news.njit.edu/wall-street-journalcollege-pulse-ranks-njit-no-2-public-university-us">Number 2 Public University in the US</a> by the Wall Street Journal.
+
+            <strong>We anticipate a sold out event, so act fast!</strong>
+            
+            <a href="app.joinhandshake.com/career_fairs/ecf839f5-f02b-4e95-ae9f-155c79f9f8db/employer_preview">Register for NJIT Spring 2025 Career Fair</a>
+            
+            We look forward to sharing the full-time, co-op, and intern opportunities of your organization with the talented and diverse students of NJIT in Engineering, Computing, Architecture, Design, Business, Science, and Math disciplines. Please be in touch if you have any questions about this event or to discuss your Spring 2025 recruiting strategy at NJIT.
+
+            Regards,
+
+            Patrick Young
+            Interim Executive Director
+            Director, Employer Relations & Outcomes
+            Career Development Services
+            New Jersey Institute of Technology
+        """
+    },
 }

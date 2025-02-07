@@ -2,6 +2,7 @@ import os, time
 import streamlit as st
 import pandas as pd
 from streamlit_pdf_viewer import pdf_viewer
+from streamlit_quill import st_quill
 from email_validator import validate_email
 from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
