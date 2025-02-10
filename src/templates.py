@@ -198,13 +198,13 @@ PREDEFINED_TEMPLATES = {
                                             <!-- Right section -->
                                             <td width="50%" style="text-align: right;">
                                                 <a href="https://www.linkedin.com/company/njitcds" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
-                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/linkedin.svg" alt="LinkedIn" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/linkedin.png" alt="LinkedIn" style="width: 24px; height: 24px; vertical-align: middle;">
                                                 </a>
                                                 <a href="https://www.instagram.com/njitcds/" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
-                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/insta.svg" alt="Instagram" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/insta.png" alt="Instagram" style="width: 24px; height: 24px; vertical-align: middle;">
                                                 </a>
                                                 <a href="https://www.facebook.com/NJITCDS/" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
-                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/fb.svg" alt="Facebook" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/fb.png" alt="Facebook" style="width: 24px; height: 24px; vertical-align: middle;">
                                                 </a>
                                             </td>
                                         </tr>
