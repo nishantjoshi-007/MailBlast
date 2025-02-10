@@ -155,7 +155,7 @@ PREDEFINED_TEMPLATES = {
                             <!-- Header -->
                             <tr>
                                 <td style="background-color: #ffffff; text-align: center; padding: 0; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-                                    <img src="static/email.png" alt="NJIT Career Fair" style="width: 100%; max-width: 600px; height: auto; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/email.png" alt="NJIT Career Fair" style="width: 100%; max-width: 600px; height: auto; border-top-left-radius: 8px; border-top-right-radius: 8px;">
                                 </td>
                             </tr>
 
@@ -198,13 +198,13 @@ PREDEFINED_TEMPLATES = {
                                             <!-- Right section -->
                                             <td width="50%" style="text-align: right;">
                                                 <a href="https://www.linkedin.com/company/njitcds" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
-                                                    <img src="static/linkedin.svg" alt="LinkedIn" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/linkedin.svg" alt="LinkedIn" style="width: 24px; height: 24px; vertical-align: middle;">
                                                 </a>
                                                 <a href="https://www.instagram.com/njitcds/" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
-                                                    <img src="insta.svg" alt="Instagram" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/insta.svg" alt="Instagram" style="width: 24px; height: 24px; vertical-align: middle;">
                                                 </a>
                                                 <a href="https://www.facebook.com/NJITCDS/" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
-                                                    <img src="static/fb.svg" alt="Facebook" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/fb.svg" alt="Facebook" style="width: 24px; height: 24px; vertical-align: middle;">
                                                 </a>
                                             </td>
                                         </tr>
