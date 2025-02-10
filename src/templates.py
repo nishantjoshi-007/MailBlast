@@ -133,4 +133,94 @@ PREDEFINED_TEMPLATES = {
         <p>New Jersey Institute of Technology</p>
         """,
     },
+    "CDS Special HTML": {
+        "subject": "NJIT Spring 2025 Career Fair - Last Chance to Register",
+        "body": """   
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Career Fair Invitation</title>
+        </head>
+        <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+
+            <!-- Email container -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f4f4f4; padding: 20px 0;">
+                <tr>
+                    <td align="center">
+                        <!-- Main email body -->
+                        <table width="600" border="0" cellspacing="0" cellpadding="20" style="background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+
+                            <!-- Header -->
+                            <tr>
+                                <td style="background-color: #ffffff; text-align: center; padding: 0; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                                    <img src="static/email.png" alt="NJIT Career Fair" style="width: 100%; max-width: 600px; height: auto; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                                </td>
+                            </tr>
+
+                            <!-- Body content -->
+                            <tr>
+                                <td style="color: #333333; font-size: 16px; line-height: 1.6;">
+                                    <p>Hello ${Fname},</p>
+
+                                    <p>Career Development Services at NJIT invites you to attend our <a href="https://www.njit.edu/careerservices/njit-career-fairs" style="color: #0f4c81; text-decoration: underline; font-weight: bold;">Spring 2025 Career Fair</a> to be held on <strong>Tuesday, February 18th from 11:30 AM - 4:00 PM.</strong></p>
+
+                                    <p>Attend to connect face-to-face with top STEM talent from <a href="https://www.njit.edu/" style="color: #0f4c81; text-decoration: underline; font-weight: bold;">NJIT</a>, one of the nation's leading public polytechnic universities, designated as an <a href="https://news.njit.edu/njit-reaffirmed-elite-research-university-retains-r1-classification" style="color: #0f4c81; text-decoration: underline; font-weight: bold;">R1 Research University</a> and <a href="https://news.njit.edu/njit-earns-hispanic-serving-status-us-dept-education" style="color: #0f4c81; text-decoration: underline; font-weight: bold;">Minority-Serving Institution</a>, and recently named <a href="https://news.njit.edu/wall-street-journalcollege-pulse-ranks-njit-no-2-public-university-us" style="color: #0f4c81; text-decoration: underline; font-weight: bold;">Number 2 Public University in the US</a> by the Wall Street Journal.</p>
+
+                                <p><i><strong>We anticipate a sold out event, so act fast!</strong></i></p>
+
+                                    <p style="text-align: center;">
+                                        <a href="app.joinhandshake.com/career_fairs/ecf839f5-f02b-4e95-ae9f-155c79f9f8db/employer_preview" style="display: inline-block; padding: 12px 20px; color: #ffffff; background-color: #0f4c81; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center;">Register for NJIT Spring 2025 Career Fair</a>
+                                    </p>
+
+                                    <p>We look forward to sharing the full-time, co-op, and intern opportunities of your organization with the talented and diverse students of NJIT in Engineering, Computing, Architecture, Design, Business, Science, and Math disciplines. Please be in touch if you have any questions about this event or to discuss your Spring 2025 recruiting strategy at NJIT.</p>
+
+                                    <p>Regards,</p>
+                                    <p><strong>Patrick Young</strong><br>
+                                    Interim Executive Director<br>
+                                    Director, Employer Relations & Outcomes<br>
+                                    Career Development Services<br>
+                                    New Jersey Institute of Technology</p>
+                                </td>
+                            </tr>
+
+                            <!-- Footer -->
+                            <tr>
+                                <td style="background-color: #d22630; color: #ffffff; padding: 20px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="10">
+                                        <tr>
+                                            <!-- Left section -->
+                                            <td width="50%" style="text-align: left; font-size: 14px;">
+                                                <a href="https://www.njit.edu/" style="color: #ffffff; text-decoration: underline; font-weight: bold;">Visit Our Website</a>
+                                            </td>
+
+                                            <!-- Right section -->
+                                            <td width="50%" style="text-align: right;">
+                                                <a href="https://www.linkedin.com/company/njitcds" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
+                                                    <img src="static/linkedin.svg" alt="LinkedIn" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                </a>
+                                                <a href="https://www.instagram.com/njitcds/" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
+                                                    <img src="insta.svg" alt="Instagram" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                </a>
+                                                <a href="https://www.facebook.com/NJITCDS/" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
+                                                    <img src="static/fb.svg" alt="Facebook" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <p style="margin: 10px 0; text-align: center; font-size: 12px;">Career Development Services, Fenster Hall, Room 400</p>
+                                    <p style="margin: 0; text-align: center; font-size: 12px;">323 Dr. Martin Luther King Jr Blvd, Newark, NJ 07102</p>
+                                    <p style="margin: 0; text-align: center; font-size: 12px;">&copy; 2025 New Jersey Institute of Technology</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </body>
+        </html>
+        """,
+    },
 }
