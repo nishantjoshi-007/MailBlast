@@ -114,7 +114,7 @@ PREDEFINED_TEMPLATES = {
         "body": """   
         <p>Dear ${Fname},</p><br />
 
-        <p>I am excited to share that ${company_name} will be recognized as ${award_name} at our 2024 Recruitment Partner Awards Event.</p><br />
+        <p>I am excited to share that ${company_name} will be recognized as ${award_name} at our 2025 Recruitment Partner Awards Event.</p><br />
 
         <p>We hope that you will join us on-campus on <strong>Friday, May 2nd from 10am – 12pm</strong> to receive this recognition.</p><br />
                         
@@ -158,7 +158,7 @@ PREDEFINED_TEMPLATES = {
                                 <td style="color: #333333; font-size: 16px; line-height: 1.6;">
                                     <p>Dear ${Fname},</p><br>
                                     
-                                    <p>I am excited to share that ${company_name} will be recognized as ${award_name} at our 2024 Recruitment Partner Awards Event!</p><br />
+                                    <p>I am excited to share that ${company_name} will be recognized as ${award_name} at our 2025 Recruitment Partner Awards Event!</p><br />
 
                                     <p>We hope that you will join us on-campus on <strong>Friday, May 2nd from 10am – 12pm</strong> to receive this recognition.</p><br />
 
