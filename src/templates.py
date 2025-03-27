@@ -149,7 +149,7 @@ PREDEFINED_TEMPLATES = {
                             <!-- Header -->
                             <tr>
                                 <td style="background-color: #ffffff; text-align: center; padding: 0; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/email.png" alt="NJIT Career Fair" style="width: 100%; max-width: 600px; height: auto; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                                    <img src="https://res.cloudinary.com/dhzkwhytv/image/upload/v1743095120/Awards_Banner_Email_dhsa8a.png" alt="NJIT Career Fair" style="width: 100%; max-width: 600px; height: auto; border-top-left-radius: 8px; border-top-right-radius: 8px;">
                                 </td>
                             </tr>
 
