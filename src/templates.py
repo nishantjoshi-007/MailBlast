@@ -109,22 +109,16 @@ PREDEFINED_TEMPLATES = {
         <p>Best,<br>${user_name}</p>
         """,
     },
-    "CDS Special": {
-        "subject": "NJIT Spring 2025 Career Fair - Last Chance to Register",
+    "NJIT CDS Special Use Only (HTML)": {
+        "subject": "NJIT 2025 Recruitment Partner Awards Event - Congratulations",
         "body": """   
-        <p>Hello ${Fname},</p><br />
+        <p>Dear ${Fname},</p><br />
 
-        <p>Career Development Services at NJIT invites you to attend our <a href="https://www.njit.edu/careerservices/njit-career-fairs">Spring 2025 Career Fair</a> to be held on <strong>Tuesday, February 18th from 11:30 AM - 4:00 PM.</strong></p><br />
+        <p>I am excited to share that ${company_name} will be recognized as ${award_name} at our 2024 Recruitment Partner Awards Event.</p><br />
 
-        <p>Attend to connect face-to-face with top STEM talent from <a href="https://www.njit.edu/">NJIT</a>, one of the nation's leading public polytechnic universities, designated as an <a href="https://news.njit.edu/njit-reaffirmed-elite-research-university-retains-r1-classification">R1 Research University</a> and <a href="https://news.njit.edu/njit-earns-hispanic-serving-status-us-dept-education">Minority-Serving Institution</a>, and recently named <a href="https://news.njit.edu/wall-street-journalcollege-pulse-ranks-njit-no-2-public-university-us">Number 2 Public University in the US</a> by the Wall Street Journal.</p><br />
-
-        <p><strong>We anticipate a sold out event, so act fast!</strong></p><br />
-            
-        <p><a href="app.joinhandshake.com/career_fairs/ecf839f5-f02b-4e95-ae9f-155c79f9f8db/employer_preview">Register for NJIT Spring 2025 Career Fair</a></p><br />
-            
-        <p>We look forward to sharing the full-time, co-op, and intern opportunities of your organization with the talented and diverse students of NJIT in Engineering, Computing, Architecture, Design, Business, Science, and Math disciplines. Please be in touch if you have any questions about this event or to discuss your Spring 2025 recruiting strategy at NJIT.</p><br />
-
-        <p>Regards,</p><br />
+        <p>We hope that you will join us on-campus on <strong>Friday, May 2nd from 10am – 12pm</strong> to receive this recognition.</p><br />
+                        
+        <p>Best Regards,</p><br />
 
         <p>Patrick Young</p>
         <p>Interim Executive Director</p>
@@ -133,15 +127,15 @@ PREDEFINED_TEMPLATES = {
         <p>New Jersey Institute of Technology</p>
         """,
     },
-    "CDS Special HTML": {
-        "subject": "NJIT Spring 2025 Career Fair - Last Chance to Register",
+    "NJIT CDS Special Use Only (HTML)": {
+        "subject": "NJIT 2025 Recruitment Partner Awards Event - Congratulations",
         "body": """   
         <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Career Fair Invitation</title>
+            <title>NJIT 2025 Recruitment Partner Awards Event</title>
         </head>
         <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
 
@@ -163,21 +157,19 @@ PREDEFINED_TEMPLATES = {
                             <tr>
                                 <td style="color: #333333; font-size: 16px; line-height: 1.6;">
                                     <p>Dear ${Fname},</p><br>
+                                    
+                                    <p>I am excited to share that ${company_name} will be recognized as ${award_name} at our 2024 Recruitment Partner Awards Event!</p><br />
 
-                                    <p>Thank you so much for participating in the NJIT Spring '25 Career Fair! We hope you had a productive and successful experience connecting with our talented students.</p><br>
+                                    <p>We hope that you will join us on-campus on <strong>Friday, May 2nd from 10am – 12pm</strong> to receive this recognition.</p><br />
 
-                                    <p>To help us improve future events, we would appreciate it if you could take a moment to share your feedback.</p><br>
-
-                                    <p><i><strong>Please fill out our quick survey here:</strong></i></p><br />
+                                    <p><i><strong>Please fill out our RSVP form here:</strong></i></p><br />
 
                                     <p style="text-align: center;">
-                                        <a href="https://njit.joinhandshake.com/stu/surveys/113439" style="display: inline-block; padding: 12px 20px; color: #ffffff; background-color: #0f4c81; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center;">Career Fair Spring 2025 Student Evaluation</a>
-                                    </p><br>
-
-                                    <p>Your feedback makes all the difference!</p><br>
-
-                                    <p>Cheers,</p><br>
-                                    <p><strong>NJIT Career Services</strong><br>
+                                        <a href="https://www.njit.edu/careerservices/njit-recruitment-partner-awards-2025" style="display: inline-block; padding: 12px 20px; color: #ffffff; background-color: #0f4c81; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center;">NJIT 2025 Recruitment Partner Awards Event Invitation</a>
+                                    </p><br /><br />
+                            
+                                    <p>Regards,</p><br>
+                                    <p><strong>Patrick Young</strong><br>
                                 </td>
                             </tr>
 
