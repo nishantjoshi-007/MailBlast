@@ -180,7 +180,7 @@ PREDEFINED_TEMPLATES = {
                                         <tr>
                                             <!-- Left section -->
                                             <td width="50%" style="text-align: left; font-size: 14px;">
-                                                <a href="https://www.njit.edu/" style="color: #ffffff; text-decoration: underline; font-weight: bold;">Visit Our Website</a>
+                                                <a href="https://www.njit.edu/careerservices" style="color: #ffffff; text-decoration: underline; font-weight: bold;">Visit Our Website</a>
                                             </td>
 
                                             <!-- Right section -->
