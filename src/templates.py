@@ -168,8 +168,8 @@ PREDEFINED_TEMPLATES = {
                                         <a href="https://www.njit.edu/careerservices/njit-recruitment-partner-awards-2025" style="display: inline-block; padding: 12px 20px; color: #ffffff; background-color: #0f4c81; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center;">NJIT 2025 Recruitment Partner Awards Event Invitation</a>
                                     </p><br /><br />
                             
-                                    <p>Regards,</p><br>
-                                    <p><strong>Patrick Young</strong><br>
+                                    <p>Regards,<br />
+                                    <strong>Patrick Young</strong><br />
                                 </td>
                             </tr>
 
