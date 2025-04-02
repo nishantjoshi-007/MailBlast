@@ -156,20 +156,22 @@ PREDEFINED_TEMPLATES = {
                             <!-- Body content -->
                             <tr>
                                 <td style="color: #333333; font-size: 16px; line-height: 1.6;">
-                                    <p>Dear ${Fname},</p><br>
+                                    <p>Dear ${Fname},<br />
                                     
-                                    <p>I am excited to share that ${company_name} will be recognized as ${award_name} at our 2025 Recruitment Partner Awards Event!</p><br />
+                                    Each year, NJIT Career Development Services hosts an awards ceremony to honor our outstanding partners and contributors. These awards recognize the pivotal role these organizations play in providing career opportunities and high-impact experiential learning for students.<br />
+                                    
+                                    I am excited to share that ${company_name} will be recognized as ${award_name} at our 2025 Recruitment Partner Awards Event!<br />
 
-                                    <p>We hope that you will join us on-campus on <strong>Friday, May 2nd from 10am – 12pm</strong> to receive this recognition.</p><br />
+                                    We hope that you will join us on-campus on <strong>Friday, May 2nd from 10am – 12pm</strong> to receive this recognition.<br />
 
-                                    <p><i><strong>Please fill out our RSVP form here:</strong></i></p><br />
+                                    <i><strong>Please fill out our RSVP form here:</strong></i><br />
 
                                     <p style="text-align: center;">
                                         <a href="https://www.njit.edu/careerservices/njit-recruitment-partner-awards-2025" style="display: inline-block; padding: 12px 20px; color: #ffffff; background-color: #0f4c81; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center;">NJIT 2025 Recruitment Partner Awards Event Invitation</a>
                                     </p><br /><br />
                             
                                     <p>Regards,<br />
-                                    <strong>Patrick Young</strong><br />
+                                    <strong>Patrick Young</strong><br /></p>
                                 </td>
                             </tr>
 
@@ -198,8 +200,8 @@ PREDEFINED_TEMPLATES = {
                                         </tr>
                                     </table>
 
-                                    <p style="margin: 10px 0; text-align: center; font-size: 12px;">Career Development Services, Fenster Hall, Room 400</p>
-                                    <p style="margin: 0; text-align: center; font-size: 12px;">323 Dr. Martin Luther King Jr Blvd, Newark, NJ 07102</p>
+                                    <p style="margin: 0; text-align: center; font-size: 12px;">Career Development Services, Fenster Hall, Room 400</p>
+                                    <p style="margin: 10px 0; text-align: center; font-size: 12px;">323 Dr. Martin Luther King Jr Blvd, Newark, NJ 07102</p>
                                     <p style="margin: 0; text-align: center; font-size: 12px;">&copy; 2025 New Jersey Institute of Technology</p>
                                 </td>
                             </tr>
