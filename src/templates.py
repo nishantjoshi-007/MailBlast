@@ -160,14 +160,14 @@ PREDEFINED_TEMPLATES = {
                                     
                                     <p>Each year, NJIT Career Development Services hosts an awards ceremony to honor our outstanding partners and contributors. These awards recognize the pivotal role these organizations play in providing career opportunities and high-impact experiential learning for students.</p>
                                     
-                                    <p>I am excited to share that ${company_name} will be recognized as ${award_name} at our 2025 Recruitment Partner Awards Event!</p>
+                                    <p>I am excited to share that ${winner} will be recognized as ${award_name} at our 2025 Recruitment Partner Awards Event!</p>
 
                                     <p>We hope that you will join us on-campus on <strong>Friday, May 2nd from 10am – 12pm</strong> to receive this recognition.</p>
 
                                     <p><i><strong>Please fill out our RSVP form here:</strong></i><br />
                                         <p style="text-align: center;">
                                             <a href="https://www.njit.edu/careerservices/njit-recruitment-partner-awards-2025" style="display: inline-block; padding: 12px 20px; color: #ffffff; background-color: #0f4c81; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center;">NJIT 2025 Recruitment Partner Awards Event Invitation</a>
-                                        </p><br /><br />
+                                        </p><br />
                                     </p>
                             
                                     <p>Regards,<br />
