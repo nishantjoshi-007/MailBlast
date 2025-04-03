@@ -218,4 +218,95 @@ PREDEFINED_TEMPLATES = {
         </html>
         """,
     },
+    "NJIT CDS Special Use Only - Individual (HTML)": {
+        "subject": "NJIT 2025 Recruitment Partner Awards Event - Congratulations",
+        "body": """   
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>NJIT 2025 Recruitment Partner Awards Event</title>
+        </head>
+        <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+
+            <!-- Email container -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f4f4f4; padding: 20px 0;">
+                <tr>
+                    <td align="center">
+                        <!-- Main email body -->
+                        <table width="600" border="0" cellspacing="0" cellpadding="20" style="background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+
+                            <!-- Header -->
+                            <tr>
+                                <td style="background-color: #ffffff; text-align: center; padding: 0; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                                    <img src="https://res.cloudinary.com/dhzkwhytv/image/upload/v1743095120/Awards_Banner_Email_dhsa8a.png" alt="NJIT Career Fair" style="width: 100%; max-width: 600px; height: auto; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                                </td>
+                            </tr>
+
+                            <!-- Body content -->
+                            <tr>
+                                <td style="color: #333333; font-size: 16px; line-height: 1.6;">
+                                    <p>Dear ${Fname},</p>
+                                    
+                                    <p>Each year, NJIT Career Development Services hosts an awards ceremony to honor our outstanding partners and contributors. These awards recognize the pivotal role these organizations or individuals play in providing career opportunities and high-impact experiential learning for NJIT students.</p>
+                                    
+                                    <p>I am excited to share that <strong>you</strong> will be recognized as <strong>${award_name}</strong> at our Recruitment Partner Awards Event! Our full list of award recipients for this year can be found <a href="https://www.njit.edu/careerservices/top-njit-recruitment-partners" style="color: #000">here</a>.</p>
+
+                                    <p>We hope that you and your colleagues will join us on-campus on <strong>Friday, May 2nd from 10am – 12pm</strong> to receive this recognition.</p>
+
+                                    <p><br /><i><strong>Please RSVP below by April 25th:</strong></i><br />
+                                        <p style="text-align: center;">
+                                            <a href="https://www.njit.edu/careerservices/njit-recruitment-partner-awards-2025" style="display: inline-block; padding: 12px 20px; color: #ffffff; background-color: #0f4c81; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center;">NJIT 2025 Recruitment Partner Awards Event Invitation</a>
+                                        </p><br />
+                                    </p>
+                                    
+                                    <p>Thank you again for your partnership, and we look forward to honoring your contributions.</p>
+                            
+                                    <p>Regards,<br />
+                                    <strong>Patrick Young</strong><br />
+                                    Interim Executive Director<br />
+                                    Career Development Services<br />
+                                    New Jersey Institute of Technology</p>
+                                </td>
+                            </tr>
+
+                            <!-- Footer -->
+                            <tr>
+                                <td style="background-color: #d22630; color: #ffffff; padding: 20px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="10">
+                                        <tr>
+                                            <!-- Left section -->
+                                            <td width="50%" style="text-align: left; font-size: 14px;">
+                                                <a href="https://www.njit.edu/careerservices" style="color: #ffffff; text-decoration: underline; font-weight: bold;">Visit Our Website</a>
+                                            </td>
+
+                                            <!-- Right section -->
+                                            <td width="50%" style="text-align: right;">
+                                                <a href="https://www.linkedin.com/company/njitcds" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
+                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/linkedin.png" alt="LinkedIn" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                </a>
+                                                <a href="https://www.instagram.com/njitcds/" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
+                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/insta.png" alt="Instagram" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                </a>
+                                                <a href="https://www.facebook.com/NJITCDS/" style="color: #ffffff; text-decoration: none; margin: 0 10px;">
+                                                    <img src="https://raw.githubusercontent.com/nishantjoshi-007/MailBlast/main/static/fb.png" alt="Facebook" style="width: 24px; height: 24px; vertical-align: middle;">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <p style="margin: 0; text-align: center; font-size: 12px;">Career Development Services, Fenster Hall, Room 400</p>
+                                    <p style="margin: 10px 0; text-align: center; font-size: 12px;">323 Dr. Martin Luther King Jr Blvd, Newark, NJ 07102</p>
+                                    <p style="margin: 0; text-align: center; font-size: 12px;">&copy; 2025 New Jersey Institute of Technology</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </body>
+        </html>
+        """,
+    },
 }
