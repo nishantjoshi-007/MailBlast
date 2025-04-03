@@ -160,21 +160,23 @@ PREDEFINED_TEMPLATES = {
                                     
                                     <p>Each year, NJIT Career Development Services hosts an awards ceremony to honor our outstanding partners and contributors. These awards recognize the pivotal role these organizations or individuals play in providing career opportunities and high-impact experiential learning for NJIT students.</p>
                                     
-                                    <p>I am excited to share that ${winner} will be recognized as ${award_name} at our 2025 Recruitment Partner Awards Event!</p>
+                                    <p>I am excited to share that <strong>${winner}</strong> will be recognized as <strong>${award_name}</strong> at our Recruitment Partner Awards Event! Our full list of award recipients for this year can be found <a href="https://www.njit.edu/careerservices/top-njit-recruitment-partners" style="color: #000">here</a>.</p>
 
                                     <p>We hope that you and your colleagues will join us on-campus on <strong>Friday, May 2nd from 10am – 12pm</strong> to receive this recognition.</p>
 
-                                    <p><br /><i><strong>Please fill out our RSVP form here:</strong></i><br />
+                                    <p><br /><i><strong>Please RSVP below by April 25th:</strong></i><br />
                                         <p style="text-align: center;">
                                             <a href="https://www.njit.edu/careerservices/njit-recruitment-partner-awards-2025" style="display: inline-block; padding: 12px 20px; color: #ffffff; background-color: #0f4c81; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center;">NJIT 2025 Recruitment Partner Awards Event Invitation</a>
                                         </p><br />
                                     </p>
                                     
-                                    <p>Our full list of award recipients for this year can be found <a href="https://www.njit.edu/careerservices/top-njit-recruitment-partners" style="color: #000">here</a>. Over the coming months, we plan to broadly display the accomplishments of our top partners throughout the NJIT community. We encourage you to join us in this recognition by <strong>sharing a quote about your partnership with NJIT and/or the caliber of our students and graduates.<strong></p>
+                                    <p>Thank you again for your partnership, and we look forward to honoring your contributions.</p>
                             
                                     <p>Regards,<br />
                                     <strong>Patrick Young</strong><br />
-                                    Interim Executive Director<br /></p>
+                                    Interim Executive Director<br />
+                                    Career Development Services<br />
+                                    New Jersey Institute of Technology</p>
                                 </td>
                             </tr>
 
